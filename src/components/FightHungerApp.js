@@ -1,3 +1,5 @@
+import "../assets/css/footer.css"
+
 import Home from "./Home";
 import Footer from "./Footer";
 

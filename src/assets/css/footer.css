@@ -1,0 +1,7 @@
+footer {
+  display: flex;
+  flex-wrap: wrap;
+}
+footer .logo-box {
+  width: 400px;
+}
