@@ -20,10 +20,10 @@ const Home = (props) => {
                 <h3>Mission</h3>
                 <p>We shall serve as a hub that can reallocate food to where they are needed the most.</p>
             </div>
-            <div>
+            <div id="founders">
                 <h3>Founders</h3>
                 <div>
-                    <div>
+                    <div className="founder-box">
                         <div>
                             <img src={founder1} alt="Founder" />
                         </div>
@@ -39,7 +39,7 @@ const Home = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div className="founder-box">
                         <div>
                             <img src={founder2} alt="Founder" />
                         </div>
