@@ -37,7 +37,7 @@ const BeneficiaryPg = (props) => {
     }
 
     let handleAdd = (e) => {
-        Axios.post('http://localhost:8000/beneficiaries/', {name})
+        Axios.post('http://localhost:8000/beneficiaries/', {name, address, contactNum, description, website, photo})
         .then (res => {
             props.addBeneficiary(res.data)
         })
@@ -97,18 +97,18 @@ const BeneficiaryPg = (props) => {
                 </form>
 
                 <button
-                onClick={handleAdd}>ADD</button>
+                onClick={handleAdd}>
+                    ADD
+                </button>
 
             </div>
             <div>
-                SELECTION: 
+
                 {props.beneficiaries.map (beneficiary =>
                 <BeneficiaryList 
                     beneficiary={beneficiary}
                 />
-                    
-                    )}
-
+                )}
 
             </div>
         </>

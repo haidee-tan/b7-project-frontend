@@ -1,11 +1,13 @@
 const initialState = {
     axiosPort: "http://localhost:8000/",
     beneficiaries: [],
+    posts: [],
     
 }
 const reducer = (state = initialState, action) => {
     
     switch(action.type) {
+        // BENEFICIARIES
         case "SET_BENEFICIARIES": {
             return {
                 ...state,
@@ -37,6 +39,40 @@ const reducer = (state = initialState, action) => {
             return  {
                 ...state,
                 beneficiaries: beneficiaryCopy
+            }
+        }
+        // POSTS
+        case    "SET_POST": {
+            return {
+                ...state,
+                posts: action.payload
+            }
+        }
+        case    "ADD_POST": {
+            let postCopy = [...state.posts, action.payload]
+            return  {
+                ...state,
+                posts: postCopy
+            }
+        }
+        case    "EDIT_POST": {
+            let postCopy = [...state.posts]
+            let index = postCopy.findIndex( (post) => post._id === action.payload._id);
+            if (index !== -1)
+            postCopy[index] = action.payload
+            return {
+                ...state,
+                posts: postCopy
+            }
+        }
+        case    "DEL_POST": {
+            let postCopy = [...state.posts]
+            let index = postCopy.findIndex( (post) => post._id === action.payload._id);
+            if ( index !== -1 )
+            postCopy.splice(index, 1)
+            return  {
+                ...state,
+                posts: postCopy
             }
         }
 
