@@ -11,10 +11,29 @@ import { useState, useEffect } from 'react'
 const BeneficiaryPg = (props) => {
 
     let [name, setName] = useState('')
-
+    let [address, setAddress] = useState('')
+    let [contactNum, setContactNum] = useState('')
+    let [description, setDescription] = useState('')
+    let [website, setWebsite] = useState('')
+    let [photo, setPhoto] = useState('')
 
     let addName = (e) => {
         setName(e.target.value)
+    }
+    let addAddress = (e) => {
+        setAddress(e.target.value)
+    }
+    let addContactNum = (e) => {
+        setContactNum(e.target.value)
+    }
+    let addDescription = (e) => {
+        setDescription(e.target.value)
+    }
+    let addWebsite = (e) => {
+        setWebsite(e.target.value)
+    }
+    let addPhoto = (e) => {
+        setPhoto(e.target.value)
     }
 
     let handleAdd = (e) => {
@@ -23,15 +42,9 @@ const BeneficiaryPg = (props) => {
             props.addBeneficiary(res.data)
         })
     }
-    let handleDel = () => {
-        Axios.delete('http://localhost:8000/beneficiaries/' + props.beneficiary._id)
-        .then(res => {
-            props.delBeneficiary(res.data)
-        })
-    }
 
     useEffect (() => {
-        Axios.get('http://localhost:8000/beneficiaries')
+        Axios.get('http://localhost:8000/beneficiaries/')
             .then(res => {
                 console.log(res.data)
                 props.setBeneficiary(res.data);
@@ -51,12 +64,41 @@ const BeneficiaryPg = (props) => {
                     onChange={addName}
                     placeholder="Enter Name"
                     />
+                    <input 
+                    type="text"
+                    value={address}
+                    onChange={addAddress}
+                    placeholder="Enter Address"
+                    />
+                    <input 
+                    type="text"
+                    value={contactNum}
+                    onChange={addContactNum}
+                    placeholder="Enter Contact Number"
+                    />
+                    <input 
+                    type="text"
+                    value={description}
+                    onChange={addDescription}
+                    placeholder="Enter Description"
+                    />
+                    <input 
+                    type="text"
+                    value={website}
+                    onChange={addWebsite}
+                    placeholder="Enter Website"
+                    />
+                    <input 
+                    type="text"
+                    value={photo}
+                    onChange={addPhoto}
+                    placeholder="Enter Photo"
+                    />
                 </form>
+
                 <button
                 onClick={handleAdd}>ADD</button>
-                <button>EDIT</button>
-                <button
-                onClick={handleDel}>x</button>
+
             </div>
             <div>
                 SELECTION: 
@@ -83,8 +125,6 @@ const mapDispatchToProps = (dispatch) => {
         setBeneficiary: (beneficiary) => dispatch({type: 'SET_BENEFICIARIES', payload: beneficiary}),
 
         addBeneficiary: (beneficiary) => dispatch ({ type:'ADD_BENEFICIARY', payload: beneficiary}),
-
-        delBeneficiary: (beneficiary) => dispatch ({type: 'DEL_BENEFICIARY', payload: beneficiary})
     }
 }
 

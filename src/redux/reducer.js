@@ -18,6 +18,16 @@ const reducer = (state = initialState, action) => {
                 beneficiaries: beneficiaryCopy
             }
         }
+        case    "EDIT_BENEFICIARY": {
+            let beneficiaryCopy = [...state.beneficiaries]
+            let index = beneficiaryCopy.findIndex( (beneficiary) => beneficiary._id === action.payload._id);
+            if (index !== -1)
+            beneficiaryCopy[index] = action.payload
+            return {
+                ...state,
+                beneficiaries: beneficiaryCopy
+            }
+        }
         case    "DEL_BENEFICIARY": {
             let beneficiaryCopy = [...state.beneficiaries]
             let index = beneficiaryCopy.findIndex( (beneficiary) => beneficiary._id === action.payload._id);
@@ -28,6 +38,9 @@ const reducer = (state = initialState, action) => {
                 beneficiaries: beneficiaryCopy
             }
         }
+
+        default:
+            return state;
     }
     
 }
