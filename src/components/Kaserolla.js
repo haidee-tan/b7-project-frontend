@@ -1,5 +1,9 @@
+// COMPONENTS
 import Home from "./Home";
 import Footer from "./Footer";
+import BeneficiaryPg from './BeneficiaryPg'
+import PostPg from './PostPg'
+
 
 const Kaserolla = (props) => {
 
@@ -8,7 +12,14 @@ const Kaserolla = (props) => {
         <div>
             <h1> CONNECTED</h1>
         </div>
+
+        <div>
+            {/* <BeneficiaryPg /> */}
+        </div>
             
+        <div>
+            {/* <PostPg /> */}
+        </div>
         </>
     )
 }

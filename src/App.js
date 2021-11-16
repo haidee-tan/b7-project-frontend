@@ -1,6 +1,5 @@
 import './App.css';
 import Kaserolla from './components/Kaserolla';
-import BeneficiaryPg from './components/BeneficiaryPg'
 
 
 function App () {
@@ -8,9 +7,6 @@ function App () {
     <>
       <div>
         < Kaserolla />
-      </div>
-      <div>
-        <BeneficiaryPg />
       </div>
     </>
   )
