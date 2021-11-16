@@ -75,7 +75,7 @@ const reducer = (state = initialState, action) => {
                 posts: postCopy
             }
         }
-
+        
         default:
             return state;
     }

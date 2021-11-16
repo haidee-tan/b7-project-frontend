@@ -61,65 +61,85 @@ const BeneficiaryList = (props) => {
     return (
         <>
         
-        <div>
-            <div>
-                {props.beneficiary.name}
-        
-                <input
-                value={beneficiaryName}
-                onChange={changeName} />
+        <div className="beneListContainer">
+            <div className="beneListBox">
+
+                <div className="beneName">
+                    
+                    <h2>
+                        {props.beneficiary.name}
+                    </h2>
+            
+                    <input
+                    value={beneficiaryName}
+                    onChange={changeName} />
+                </div>
+
+                <div className="beneAddress">
+                    <div>
+                        {props.beneficiary.address}
+                    </div>
+
+                    <input
+                    value={beneficiaryAddress}
+                    onChange={changeAddress} />
+                </div>
+
+                <div className="beneContact">
+                    <div>
+                        {props.beneficiary.contactNum}
+                    </div>
+
+                    <input
+                    value={beneficiaryContactNum}
+                    onChange={changeContactNum} />
+                </div>
+
+                <div className="beneDesc">
+                    <div>
+                        {props.beneficiary.description}
+                    </div>
+
+                    <input
+                    value={beneficiaryDescription}
+                    onChange={changeDescription} />
+                </div>
+
+                <div className="beneWebsite">
+                    <div>
+                        {props.beneficiary.website}
+                    </div>
+
+                    <input
+                    value={beneficiaryWebsite}
+                    onChange={changeWebsite} />
+                </div>
+
+                <div className="benePhoto">
+                    <div >
+                        <img className="beneImg" src={props.beneficiary.photo}/>
+                    </div>
+                    
+
+                    <input
+                    value={beneficiaryPhoto}
+                    onChange={changePhoto} />
+                </div>
+
             </div>
+                <button 
+                className="beneEditBtn"
+                onClick={handleEdit}>
+                    EDIT
+                </button>
 
-            <div>
-                {props.beneficiary.address}
-
-                <input
-                value={beneficiaryAddress}
-                onChange={changeAddress} />
-            </div>
-
-            <div>
-                {props.beneficiary.contactNum}
-
-                <input
-                value={beneficiaryContactNum}
-                onChange={changeContactNum} />
-            </div>
-
-            <div>
-                {props.beneficiary.description}
-
-                <input
-                value={beneficiaryDescription}
-                onChange={changeDescription} />
-            </div>
-
-            <div>
-                {props.beneficiary.website}
-
-                <input
-                value={beneficiaryWebsite}
-                onChange={changeWebsite} />
-            </div>
-
-            <div>
-                {props.beneficiary.photo}
-
-                <input
-                value={beneficiaryPhoto}
-                onChange={changePhoto} />
-            </div>
+                <button 
+                className="beneDelBtn"
+                onClick={handleDel}>
+                    x
+                </button>
         </div>
         
-        <button 
-        onClick={handleEdit}>
-            EDIT
-        </button>
-
-        <button 
-        onClick={handleDel}>
-            x
-        </button>
 
         </>
         

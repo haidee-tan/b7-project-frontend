@@ -1,7 +1,7 @@
 // COMPONENTS
 import Home from "./Home";
 import Footer from "./Footer";
-import BeneficiaryPg from './BeneficiaryPg';
+import BeneficiaryPg from "./BeneficiaryPg";
 import PostPg from './PostPg';
 
 
@@ -9,16 +9,21 @@ const Kaserolla = (props) => {
 
     return ( 
         <>
-        <div>
-            <h1> CONNECTED</h1>
+
+        <div className="home">
+            {/* <Home /> */}
         </div>
 
-        <div>
+        <div className="footer">
+            {/* <Footer /> */}
+        </div>
+
+        <div className="beneficiaryComp">
             {/* <BeneficiaryPg /> */}
         </div>
             
-        <div>
-            {/* <PostPg /> */}
+        <div className="postComp">
+            <PostPg />
         </div>
         </>
     )
