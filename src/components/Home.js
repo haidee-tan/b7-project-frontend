@@ -63,7 +63,7 @@ const Home = (props) => {
                     </div>
                     <div>
                         <p>You may also send feedback through the form below.</p>
-                        <form action={`mailto:${genEmail}`} method="post" enctype="text/plain">
+                        <form action={`mailto:${genEmail}`} method="post" encType="text/plain">
                             <div>
                                 <label htmlFor="guest-email-add">Your email address:</label>
                                 <input type="email" id="guest-email-add" value={guestEmail} onChange={e => setGuestEmail(e.target.value)}/>
