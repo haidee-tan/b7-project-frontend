@@ -31,7 +31,7 @@ const BeneficiaryPg = (props) => {
     }
 
     useEffect (() => {
-        Axios('http://localhost:8000/beneficiaries')
+        Axios.get('http://localhost:8000/beneficiaries')
             .then(res => {
                 console.log(res.data)
                 props.setBeneficiary(res.data);
