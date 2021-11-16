@@ -1,12 +1,18 @@
 import './App.css';
-import FightHungerApp from './components/FightHungerApp';
+import Kaserolla from './components/Kaserolla';
+import BeneficiaryPg from './components/BeneficiaryPg'
 
 
 function App () {
   return (
+    <>
       <div>
-        < FightHungerApp />
+        < Kaserolla />
       </div>
+      <div>
+        <BeneficiaryPg />
+      </div>
+    </>
   )
 }
  
