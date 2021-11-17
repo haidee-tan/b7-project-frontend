@@ -27,9 +27,9 @@ const PostAddForm = (props) => {
     }
 
     return (
-        <div>
+        <div >
             <div>Create new post</div>
-            <form>
+            <form className="postAddForm">
                 <input 
                     type="text"
                     value = {name}

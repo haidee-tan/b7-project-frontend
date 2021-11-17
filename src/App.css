@@ -45,6 +45,12 @@
   height: 200px;
 }
 
+/* ALL ABOUT POST */
+/* ADD FORM */
+.postAddFormBox {
+  margin: 5px;
+}
+
 
 
 @media only screen and (min-width: 556px) {
