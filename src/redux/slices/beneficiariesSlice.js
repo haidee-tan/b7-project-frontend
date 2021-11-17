@@ -27,7 +27,7 @@ const beneficiariesSlice = (state = initialState, action) => {
                 beneficiaries: beneficiaryCopy
             }
         }
-        case "DEL_BENEFICIARY": {
+        case "DELETE_BENEFICIARY": {
             let beneficiaryCopy = [...state.beneficiaries]
             let index = beneficiaryCopy.findIndex( (beneficiary) => beneficiary._id === action.payload._id);
             if ( index !== -1 )
