@@ -24,7 +24,7 @@ const PostAddForm = (props) => {
             quantity, 
             photos
         }
-        Axios.post(props.axiosPort + "posts/", newPost)
+        Axios.post(props.axiosPort + "posts/", newPost, {headers:{'content-type': 'multipart/form-data'}})
         .then (res => {
             props.addPost(res.data)
         })
@@ -36,7 +36,7 @@ const PostAddForm = (props) => {
             {/* ALL SUBMITTED DATA IS REFLECTED IN BE*/}
             {/* SET TO MULTIPLE UPLOADS */}
             <div>Create new post</div>
-            <form method="POST" action="/posts" encType="multipart/form-data">
+            <form method="POST" action={props.axiosPort + "posts/"} encType="multipart/form-data">
                 <input 
                     type="text"
                     value = {name}
