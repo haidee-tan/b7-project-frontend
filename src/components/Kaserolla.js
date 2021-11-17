@@ -1,4 +1,4 @@
-import { connect } from "react-redux";
+import {Route} from "react-router-dom";
 import Home from "./Home";
 import Nav from "./Nav";
 import Footer from "./Footer";
@@ -13,23 +13,17 @@ const Kaserolla = ({activePage}) => {
     return ( 
         <div>
             <Nav />
-            {activePage === "home" ? <Home /> : null}
-            {activePage === "beneficiaries" ? <BeneficiaryPg /> : null}
-            {activePage === "posts" ? <PostPg /> : null}
-            {/* {activePage === "donations" ? < /> : null} */}
-            {/* {activePage === "deliveries" ? < /> : null} */}
-            {/* {activePage === "userMgt" ? <Home /> : null} */}
-            {activePage === "signup" ? <SignUp /> : null}
-            {/* {activePage === "login" ? <Login /> : null} */}
+            <Route path="/" component={Home} exact/>
+            <Route path="/beneficiaries" component={BeneficiaryPg} />
+            <Route path="/posts" component={PostPg} />
+            <Route path="/donations" component="" />
+            <Route path="/deliveries" component="" />
+            <Route path="/usermgt" component="" />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/login" component="" />
             <Footer />
         </div>
     )
 }
 
-const mapStateToProps = (state) => {
-    return{
-        activePage: state.navSlice.activePage
-    }
-}
-
-export default connect(mapStateToProps)(Kaserolla);
+export default Kaserolla;
