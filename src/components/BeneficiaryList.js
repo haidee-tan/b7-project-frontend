@@ -39,29 +39,29 @@ const BeneficiaryList = (props) => {
             <div className="beneListBox">
                 <div className="beneName">
                     <h2>{props.beneficiary.name}</h2>
-                    <input value={beneficiaryName} onChange={e => setBeneficiaryName(e.target.value)} />
+                    <input type="text" value={beneficiaryName} onChange={e => setBeneficiaryName(e.target.value)} />
                 </div>
                 <div className="beneAddress">
                     <div>{props.beneficiary.address}</div>
-                    <input value={beneficiaryAddress} onChange={e => setBeneficiaryAddress(e.target.value)} />
+                    <input type="text" value={beneficiaryAddress} onChange={e => setBeneficiaryAddress(e.target.value)} />
                 </div>
                 <div className="beneContact">
                     <div>{props.beneficiary.contactNum}</div>
-                    <input value={beneficiaryContactNum} onChange={e => setBeneficiaryContactNum(e.target.value)} />
+                    <input type="number" value={beneficiaryContactNum} onChange={e => setBeneficiaryContactNum(e.target.value)} />
                 </div>
                 <div className="beneDesc">
                     <div>{props.beneficiary.description}</div>
-                    <input value={beneficiaryDescription} onChange={e => setBeneficiaryDescription(e.target.value)} />
+                    <input type="text" value={beneficiaryDescription} onChange={e => setBeneficiaryDescription(e.target.value)} />
                 </div>
                 <div className="beneWebsite">
                     <div>{props.beneficiary.website}</div>
-                    <input value={beneficiaryWebsite} onChange={e => setBeneficiaryWebsite(e.target.value)} />
+                    <input type="text" value={beneficiaryWebsite} onChange={e => setBeneficiaryWebsite(e.target.value)} />
                 </div>
                 <div className="benePhoto">
                     <div >
                         <img className="beneImg" src={props.beneficiary.photo} alt={props.beneficiary.name}/>
                     </div>
-                    <input value={beneficiaryPhoto} onChange={e => setBeneficiaryPhoto(e.target.value)} />
+                    <input type="file" value={beneficiaryPhoto} onChange={e => setBeneficiaryPhoto(e.target.value)} />
                 </div>
             </div>
             <div>

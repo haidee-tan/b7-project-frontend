@@ -37,27 +37,27 @@ const PostList = (props) => {
         <div>
             <div>
                 <div>{props.post.name}</div>
-                <input value={editPostName} onChange={e => setEditPostName(e.target.value)} />
+                <input type="text" value={editPostName} onChange={e => setEditPostName(e.target.value)} />
             </div>
             <div>
                 <div>{props.post.description}</div>
-                <input value={editPostDescription} onChange={e => setEditPostDescription(e.target.value)} />
+                <input type="text" value={editPostDescription} onChange={e => setEditPostDescription(e.target.value)} />
             </div>
             <div>
                 <div>{props.post.availability}</div>
-                <input value={editPostAvailability} onChange={e => setEditPostAvailability(e.target.value)} />
+                <input type="text" value={editPostAvailability} onChange={e => setEditPostAvailability(e.target.value)} />
             </div>
             <div>
                 <div>{props.post.price}</div>
-                <input value={editPostPrice} onChange={e => setEditPostPrice(e.target.value)} />
+                <input type="number" value={editPostPrice} onChange={e => setEditPostPrice(e.target.value)} />
             </div>
             <div>
                 <div>{props.post.quantity}</div>
-                <input value={editPostQuantity} onChange={e => setEditPostQuantity(e.target.value)} />
+                <input type="number" value={editPostQuantity} onChange={e => setEditPostQuantity(e.target.value)} />
             </div>
             <div>
                 <div>{props.post.photo}</div>
-                <input value={editPostPhoto} onChange={e => setEditPostPhoto(e.target.value)} />
+                <input type="file" value={editPostPhoto} onChange={e => setEditPostPhoto(e.target.value)} />
             </div>
             <div>
                 <button onClick={handleEditPost}>Edit</button>

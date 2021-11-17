@@ -82,7 +82,7 @@ const BeneAddForm = (props) => {
                         Images:
                         <input
                             className="addBenePhoto inputBene"
-                            type="text"
+                            type="file"
                             value={photo}
                             onChange={e => setPhoto(e.target.value)}
                         />

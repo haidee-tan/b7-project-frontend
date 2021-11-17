@@ -31,31 +31,37 @@ const PostAddForm = (props) => {
             <div>Create new post</div>
             <form>
                 <input 
+                    type="text"
                     value = {name}
                     onChange = {e => setName(e.target.value)}
                     placeholder = "Name"
                 />
                 <input 
+                    type="text"
                     value = {description}
                     onChange = {e => setDescription(e.target.value)}
                     placeholder = "Details"
                 />
                 <input 
+                    type="text"
                     value = {availability}
                     onChange = {e => setAvailability(e.target.value)}
                     placeholder = "Availability"
                 />
                 <input 
+                    type="number"
                     value = {price}
                     onChange = {e => setPrice(e.target.value)}
                     placeholder = "Price"
                 />
                 <input 
+                    type="number"
                     value = {quantity}
                     onChange = {e => setQuantity(e.target.value)}
                     placeholder = "Quantity"
                 />
                 <input 
+                    type="file"
                     value = {photo}
                     onChange = {e => setPhoto(e.target.value)}
                     placeholder = "Upload Photos"
