@@ -8,8 +8,12 @@ const PostAddForm = (props) => {
     let [description, setDescription] = useState('')
     let [availability, setAvailability] = useState('')
     let [price, setPrice] = useState('')
-    let [photo, setPhoto] = useState('')
+    let [photos, setPhotos] = useState('')
     let [quantity, setQuantity] = useState('')
+    // let [fileData, setFileData] = useState('')
+
+    // const data = new FormData();
+    // data.append('img', fileData)?
 
     let handleAddPost = (e) => {
         let newPost = {
@@ -18,7 +22,7 @@ const PostAddForm = (props) => {
             availability, 
             price, 
             quantity, 
-            photo
+            photos
         }
         Axios.post(props.axiosPort + "posts/", newPost)
         .then (res => {
@@ -28,8 +32,11 @@ const PostAddForm = (props) => {
 
     return (
         <div>
+            {/* UPLOADING IMAGE IS NOT SAVED IN THE PUBLIC FOLDER IN BE */}
+            {/* ALL SUBMITTED DATA IS REFLECTED IN BE*/}
+            {/* SET TO MULTIPLE UPLOADS */}
             <div>Create new post</div>
-            <form>
+            <form method="POST" action="/posts" encType="multipart/form-data">
                 <input 
                     type="text"
                     value = {name}
@@ -62,9 +69,10 @@ const PostAddForm = (props) => {
                 />
                 <input 
                     type="file"
-                    value = {photo}
-                    onChange = {e => setPhoto(e.target.value)}
+                    name='img'
+                    onChange = {e => setPhotos(e.target.value)}
                     placeholder = "Upload Photos"
+                    multiple
                 />
             </form>
             <button onClick={handleAddPost}>Submit</button>

@@ -61,7 +61,7 @@ const BeneficiaryList = (props) => {
                     <div >
                         <img className="beneImg" src={props.beneficiary.photo} alt={props.beneficiary.name}/>
                     </div>
-                    <input type="file" value={beneficiaryPhoto} onChange={e => setBeneficiaryPhoto(e.target.value)} />
+                    <input type="file" onChange={e => setBeneficiaryPhoto(e.target.value)} />
                 </div>
             </div>
             <div>

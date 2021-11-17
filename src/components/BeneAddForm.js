@@ -10,7 +10,7 @@ const BeneAddForm = (props) => {
     let [description, setDescription] = useState('')
     let [website, setWebsite] = useState('')
     let [photo, setPhoto] = useState('')
-    let [active, setActive] = useState(true)
+    // let [active, setActive] = useState(true)
 
     let handleAdd = (e) => {
         Axios.post(props.axiosPort + 'beneficiaries/', 
@@ -25,14 +25,14 @@ const BeneAddForm = (props) => {
         })
     }
     
-    let hideShowForm = () => {
-        let beneForm = document.getElementsByClassName('beneForm');
-        if(beneForm.style.display === "block") {
-            beneForm.style.display = "none"
-        } else {
-            beneForm.style.display = "block"
-        }
-    }
+    // let hideShowForm = () => {
+    //     let beneForm = document.getElementsByClassName('beneForm');
+    //     if(beneForm.style.display === "block") {
+    //         beneForm.style.display = "none"
+    //     } else {
+    //         beneForm.style.display = "block"
+    //     }
+    // }
     
     return (
         <div>
