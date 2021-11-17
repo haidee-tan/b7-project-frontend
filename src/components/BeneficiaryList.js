@@ -1,7 +1,7 @@
-// 
 import { connect } from "react-redux";
 import { useState} from "react"
 import Axios from "axios";
+import { DELETE_BENEFICIARY, EDIT_BENEFICIARY } from "../redux/beneficiary/types";
 
 const BeneficiaryList = (props) => {
 
@@ -128,9 +128,9 @@ const BeneficiaryList = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        delBeneficiary: (beneficiary) => dispatch ({type: 'DEL_BENEFICIARY', payload: beneficiary}),
+        delBeneficiary: (beneficiary) => dispatch ({type: DELETE_BENEFICIARY, payload: beneficiary}),
 
-        editBeneficiary: (beneficiary) => dispatch ({type: 'EDIT_BENEFICIARY', payload: beneficiary})
+        editBeneficiary: (beneficiary) => dispatch ({type: EDIT_BENEFICIARY, payload: beneficiary})
 
     }
 }
