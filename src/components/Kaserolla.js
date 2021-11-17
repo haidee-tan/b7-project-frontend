@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import {Route} from "react-router-dom";
 import Home from "./Home";
 import Nav from "./Nav";
 import Footer from "./Footer";
@@ -13,6 +14,16 @@ const Kaserolla = ({activePage}) => {
     return ( 
         <div>
             <Nav />
+            <Route path={"/"}><Home /></Route>
+            <Route path={"/beneficiaries/"}><BeneficiaryPg /></Route>
+            <Route path={"/posts/"}><PostPg /></Route>
+            <Route path={"/donations/"}></Route>
+            <Route path={"/deliveries/"}></Route>
+            <Route path={"/userMgt/"}></Route>
+            <Route path={"/signup/"}><SignUp /></Route>
+            <Route path={"/login/"}></Route>
+
+
             {activePage === "home" ? <Home /> : null}
             {activePage === "beneficiaries" ? <BeneficiaryPg /> : null}
             {activePage === "posts" ? <PostPg /> : null}

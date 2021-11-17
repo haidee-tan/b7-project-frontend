@@ -5,7 +5,7 @@ import PostAddForm from "./PostAddForm";
 // 
 import { connect } from "react-redux";
 import Axios from "axios";
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 
 const PostPg = ({axiosPort, setPost, posts}) => {
 
