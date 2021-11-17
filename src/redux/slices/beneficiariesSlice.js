@@ -37,6 +37,12 @@ const beneficiariesSlice = (state = initialState, action) => {
                 beneficiaries: beneficiaryCopy
             }
         }
+        case    "SAMPLE" : {
+            return  {
+                ...state,
+                beneficiaries: beneficiaryCopy
+            }
+        }
         default: return state;
     }
 }
