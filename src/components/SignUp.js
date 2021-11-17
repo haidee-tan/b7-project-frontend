@@ -135,7 +135,7 @@ const SignUp = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        axiosPort: state.axiosPort
+        axiosPort: state.navSlice.axiosPort
     }
 }
 

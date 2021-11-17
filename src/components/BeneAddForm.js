@@ -1,9 +1,6 @@
-// 
 import { connect } from "react-redux";
 import Axios from "axios";
 import { useState } from 'react'
-
-
 
 const BeneAddForm = (props) => {
 
@@ -15,35 +12,15 @@ const BeneAddForm = (props) => {
     let [photo, setPhoto] = useState('')
     let [active, setActive] = useState(true)
 
-
-    let addName = (e) => {
-        setName(e.target.value)
-    }
-    let addAddress = (e) => {
-        setAddress(e.target.value)
-    }
-    let addContactNum = (e) => {
-        setContactNum(e.target.value)
-    }
-    let addDescription = (e) => {
-        setDescription(e.target.value)
-    }
-    let addWebsite = (e) => {
-        setWebsite(e.target.value)
-    }
-    let addPhoto = (e) => {
-        setPhoto(e.target.value)
-    }
-
     let handleAdd = (e) => {
-        Axios.post('http://localhost:8000/beneficiaries/', 
+        Axios.post(props.axiosPort + 'beneficiaries/', 
             {name, 
             address, 
             contactNum, 
             description, 
             website, 
             photo})
-        .then (res => {
+        .then(res => {
             props.addBeneficiary(res.data)
         })
     }
@@ -58,77 +35,82 @@ const BeneAddForm = (props) => {
     }
     
     return (
-        <>
-
+        <div>
             {/* <button
             className="beneAddBtn"
             onClick={hideShowForm}>
                 +Beneficiary
             </button> */}
-            
             <div className="beneContainer">
                 <div className="beneBox">
                     <form className="beneForm">
-
-                        Name :<input 
-                        className="addBeneName inputBene"
-                        type="text"
-                        value={name}
-                        onChange={addName}
+                        Name:
+                        <input 
+                            className="addBeneName inputBene"
+                            type="text"
+                            value={name}
+                            onChange={e => setName(e.target.value)}
                         />
-
-                        Address :<input 
-                        className="addBeneAddress inputBene"
-                        type="text"
-                        value={address}
-                        onChange={addAddress}
+                        Address:
+                        <input 
+                            className="addBeneAddress inputBene"
+                            type="text"
+                            value={address}
+                            onChange={e => setAddress(e.target.value)}
                         />
-
-                        Contact Info :<input
-                        className="addBeneContact inputBene"
-                        type="text"
-                        value={contactNum}
-                        onChange={addContactNum}
+                        Contact Info:
+                        <input
+                            className="addBeneContact inputBene"
+                            type="text"
+                            value={contactNum}
+                            onChange={e => setContactNum(e.target.value)}
                         />
-
-                        Details :<input
-                        className="addBeneDesc inputBene"
-                        type="text"
-                        value={description}
-                        onChange={addDescription}
+                        Details:
+                        <input
+                            className="addBeneDesc inputBene"
+                            type="text"
+                            value={description}
+                            onChange={e => setDescription(e.target.value)}
                         />
-
-                        Website :<input 
-                        className="addBeneWebsite inputBene"
-                        type="text"
-                        value={website}
-                        onChange={addWebsite}
+                        Website:
+                        <input 
+                            className="addBeneWebsite inputBene"
+                            type="text"
+                            value={website}
+                            onChange={e => setWebsite(e.target.value)}
                         />
-
-                        Images :<input
-                        className="addBenePhoto inputBene"
-                        type="text"
-                        value={photo}
-                        onChange={addPhoto}
+                        Images:
+                        <input
+                            className="addBenePhoto inputBene"
+                            type="text"
+                            value={photo}
+                            onChange={e => setPhoto(e.target.value)}
                         />
-
-                        <button
-                        className="beneAddBtn"
-                        onClick={handleAdd}>
-                            +Beneficiary
-                        </button>
                     </form>
+                    <button
+                        className="beneAddBtn"
+                        onClick={handleAdd}
+                    >+Beneficiary
+                    </button>
                 </div>
             </div>
-        </>
-        )
-    }
-    
-    
-    const mapDispatchToProps = (dispatch) => {
-        return { 
-            addBeneficiary: (beneficiary) => dispatch ({ type:'ADD_BENEFICIARY', payload: beneficiary}),
-        }
+        </div>
+    )
 }
 
-export default connect(null, mapDispatchToProps)(BeneAddForm);
+const mapStateToProps = (state) => {
+    return {
+        axiosPort: state.navSlice.axiosPort,
+    }
+}
+    
+const mapDispatchToProps = (dispatch) => {
+    return { 
+        addBeneficiary: (beneficiary) => dispatch ({
+            type:'ADD_BENEFICIARY',
+            payload: beneficiary
+        }),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BeneAddForm);

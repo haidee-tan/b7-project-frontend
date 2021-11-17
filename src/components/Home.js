@@ -7,7 +7,6 @@ const Home = (props) => {
     let genEmail = "feedback@kaserolla.com";
 
     return(
-
         <div>
             <div>
                 <h2>Welcome to Kaserolla!</h2>
@@ -78,9 +77,7 @@ const Home = (props) => {
                     </div>
                 </div>
             </div>
-
         </div>
-
     )
 }
 

@@ -7,45 +7,42 @@ import { connect } from "react-redux";
 import Axios from "axios";
 import { useEffect } from 'react'
 
-const PostPg = (props) => {
+const PostPg = ({axiosPort, setPost, posts}) => {
 
 useEffect (() => {
-    Axios.get('http://localhost:8000/posts/')
+    Axios.get(axiosPort + 'posts/')
         .then(res => {
-            props.setPost(res.data);
+            setPost(res.data);
     })
-}, [])
+}, [axiosPort, setPost])
 
     return (
-        <>
-
         <div>
-            <PostAddForm />
+            <div>
+                <PostAddForm />
+            </div>
+            <div>
+                {posts.map(post =>
+                    <PostList post={post} key={post.name}/>
+                )}        
+            </div>
         </div>
-        
-         
-        <div>
-        {props.posts.map ( post =>
-        <PostList 
-            post={post}
-        />
-        )}        
-        </div>
-
-
-
-        </>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        posts: state.posts,
+        axiosPort: state.navSlice.axiosPort,
+        posts: state.postsSlice.posts,
     }
 }
+
 const mapDispatchToProps = (dispatch) => {
     return {
-        setPost: (post) => dispatch({type: 'SET_POST', payload: post}),
+        setPost: (post) => dispatch({
+            type: 'SET_POST',
+            payload: post
+        }),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(PostPg);
