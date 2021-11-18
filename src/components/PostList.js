@@ -57,10 +57,10 @@ const PostList = (props) => {
             </div>
             <div>
                 <div>
-                    <img src={props.post.photo} alt="samplePicture" />
+                    <img src={props.axiosPort + props.post.photo} alt="samplePicture" />
                 </div>
             
-                <input type="file"  name='img'  onChange={e => setEditPostPhoto(e.target.value)} />
+                <input type="file"  name='photo'  onChange={e => setEditPostPhoto(e.target.files[0])} />
             </div>
             <div>
                 <button onClick={handleEditPost}>Edit</button>
