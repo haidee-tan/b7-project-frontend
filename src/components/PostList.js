@@ -9,18 +9,26 @@ const PostList = (props) => {
     let [editPostAvailability, setEditPostAvailability] = useState(props.post.availability)
     let [editPostPrice, setEditPostPrice] = useState(props.post.price)
     let [editPostQuantity, setEditPostQuantity] = useState(props.post.quantity)
-    let [editPostPhoto, setEditPostPhoto] = useState(props.post.photo)
+    let [photo, setEditPostPhoto] = useState("")
 
-    let handleEditPost = () => {
-        let editedPost = {
-            name: editPostName,
-            description: editPostDescription,
-            availability: editPostAvailability,
-            price: editPostPrice,
-            quantity: editPostQuantity,
-            photo: editPostPhoto,
-        }
-        Axios.put(props.axiosPort + "posts/" + props.post._id, editedPost)
+    let handleEditPost = (e) => {
+        e.preventDefault();
+        let formEditData = new FormData();
+        formEditData.append('name', editPostName)
+        formEditData.append('description', editPostDescription)
+        formEditData.append('availability', editPostAvailability)
+        formEditData.append('price', editPostPrice)
+        formEditData.append('photo', photo)
+        formEditData.append('quantity', editPostQuantity)
+        // let editedPost = {
+        //     name: editPostName,
+        //     description: editPostDescription,
+        //     availability: editPostAvailability,
+        //     price: editPostPrice,
+        //     quantity: editPostQuantity,
+        //     photo: editPostPhoto,
+        // }
+        Axios.put(props.axiosPort + "posts/" + props.post._id, formEditData, {headers:{'content-type': 'multipart/form-data'}})
         .then (res => {
             props.editPost(res.data)
         })
@@ -34,25 +42,32 @@ const PostList = (props) => {
     }
 
     return (
-        <div>
+        <>
+    <div>
+        <form>
             <div>
                 <div>{props.post.name}</div>
+
                 <input type="text" value={editPostName} onChange={e => setEditPostName(e.target.value)} />
             </div>
             <div>
                 <div>{props.post.description}</div>
+
                 <input type="text" value={editPostDescription} onChange={e => setEditPostDescription(e.target.value)} />
             </div>
             <div>
                 <div>{props.post.availability}</div>
+
                 <input type="text" value={editPostAvailability} onChange={e => setEditPostAvailability(e.target.value)} />
             </div>
             <div>
                 <div>{props.post.price}</div>
+
                 <input type="number" value={editPostPrice} onChange={e => setEditPostPrice(e.target.value)} />
             </div>
             <div>
                 <div>{props.post.quantity}</div>
+
                 <input type="number" value={editPostQuantity} onChange={e => setEditPostQuantity(e.target.value)} />
             </div>
             <div>
@@ -60,13 +75,19 @@ const PostList = (props) => {
                     <img src={props.axiosPort + props.post.photo} alt="samplePicture" />
                 </div>
             
-                <input type="file"  name='photo'  onChange={e => setEditPostPhoto(e.target.files[0])} />
+                <input 
+                type="file"  
+                name='photo' 
+                onChange={e => setEditPostPhoto(e.target.files[1])}
+                accept = "image/*" />
             </div>
             <div>
                 <button onClick={handleEditPost}>Edit</button>
                 <button onClick={handleDelPost}>Delete</button>
             </div>
-        </div>
+        </form>
+    </div>
+    </>
     )
 }
 

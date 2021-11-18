@@ -58,9 +58,11 @@ const BeneficiaryList = (props) => {
                     <input type="text" value={beneficiaryWebsite} onChange={e => setBeneficiaryWebsite(e.target.value)} />
                 </div>
                 <div className="benePhoto">
+                    
                     <div >
-                        <img className="beneImg" src={props.beneficiary.photo} alt={props.beneficiary.name}/>
+                        <img className="beneImg" src={props.axiosPort + props.beneficiary.photo} alt={props.beneficiary.name}/>
                     </div>
+
                     <input type="file" onChange={e => setBeneficiaryPhoto(e.target.value)} />
                 </div>
             </div>
