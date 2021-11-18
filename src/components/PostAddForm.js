@@ -10,17 +10,23 @@ const PostAddForm = (props) => {
     let [price, setPrice] = useState('')
     let [photo, setPhoto] = useState('')
     let [quantity, setQuantity] = useState('')
+    // let [fileData, setFileData] = useState('')
+
+    // const data = new FormData();
+    // data.append('img', fileData)?
 
     let handleAddPost = (e) => {
-        let newPost = {
-            name, 
-            description, 
-            availability, 
-            price, 
-            quantity, 
-            photo
-        }
-        Axios.post(props.axiosPort + "posts/", newPost)
+        e.preventDefault();
+        let formData = new FormData();
+        formData.append('name', name)
+        formData.append('description', description)
+        formData.append('availability', availability)
+        formData.append('price', price)
+        formData.append('photo', photo)
+        formData.append('quantity', quantity)
+        console.log(formData)
+    
+        Axios.post(props.axiosPort + "posts/", formData, {headers:{'content-type': 'multipart/form-data'}} )
         .then (res => {
             props.addPost(res.data)
         })
@@ -28,46 +34,56 @@ const PostAddForm = (props) => {
 
     return (
         <div>
+            {/* UPLOADING IMAGE IS NOT SAVED IN THE PUBLIC FOLDER IN BE */}
+            {/* ALL SUBMITTED DATA IS REFLECTED IN BE*/}
+            {/* SET TO MULTIPLE UPLOADS */}
             <div>Create new post</div>
             <form>
                 <input 
                     type="text"
                     value = {name}
+                    name = "name"
                     onChange = {e => setName(e.target.value)}
                     placeholder = "Name"
                 />
                 <input 
                     type="text"
                     value = {description}
+                    name = "description"
                     onChange = {e => setDescription(e.target.value)}
                     placeholder = "Details"
                 />
                 <input 
-                    type="text"
+                    type="date"
                     value = {availability}
+                    name = "availability"
                     onChange = {e => setAvailability(e.target.value)}
                     placeholder = "Availability"
                 />
                 <input 
                     type="number"
                     value = {price}
+                    name = "price"
                     onChange = {e => setPrice(e.target.value)}
                     placeholder = "Price"
                 />
                 <input 
                     type="number"
                     value = {quantity}
+                    name = "quantity"
                     onChange = {e => setQuantity(e.target.value)}
                     placeholder = "Quantity"
                 />
                 <input 
                     type="file"
-                    value = {photo}
-                    onChange = {e => setPhoto(e.target.value)}
+                    name='photo'
+                    onChange = {e => setPhoto(e.target.files[0])}
+                    accept = "image/*"
                     placeholder = "Upload Photos"
                 />
+                {/* <input type="submit"/> */}
+            <button type="button" onClick={handleAddPost}>Submit</button>
             </form>
-            <button onClick={handleAddPost}>Submit</button>
         </div>
     )
 }
