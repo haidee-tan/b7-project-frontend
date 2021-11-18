@@ -27,7 +27,7 @@ const PostAddForm = (props) => {
     }
 
     return (
-        <div>
+        <div className="postAddFormBox">
             <div>Create new post</div>
             <form>
                 <input 
@@ -62,7 +62,6 @@ const PostAddForm = (props) => {
                 />
                 <input 
                     type="file"
-                    value = {photo}
                     onChange = {e => setPhoto(e.target.value)}
                     placeholder = "Upload Photos"
                 />

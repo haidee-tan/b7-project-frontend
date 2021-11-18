@@ -34,30 +34,36 @@ const PostList = (props) => {
     }
 
     return (
-        <div>
+        <div className="postListBox">
             <div>
                 <div>{props.post.name}</div>
+
                 <input type="text" value={editPostName} onChange={e => setEditPostName(e.target.value)} />
             </div>
             <div>
                 <div>{props.post.description}</div>
+
                 <input type="text" value={editPostDescription} onChange={e => setEditPostDescription(e.target.value)} />
             </div>
             <div>
                 <div>{props.post.availability}</div>
+
                 <input type="text" value={editPostAvailability} onChange={e => setEditPostAvailability(e.target.value)} />
             </div>
             <div>
                 <div>{props.post.price}</div>
+
                 <input type="number" value={editPostPrice} onChange={e => setEditPostPrice(e.target.value)} />
             </div>
             <div>
                 <div>{props.post.quantity}</div>
+
                 <input type="number" value={editPostQuantity} onChange={e => setEditPostQuantity(e.target.value)} />
             </div>
             <div>
                 <div>{props.post.photo}</div>
-                <input type="file" value={editPostPhoto} onChange={e => setEditPostPhoto(e.target.value)} />
+
+                <input type="file" onChange={e => setEditPostPhoto(e.target.value)} />
             </div>
             <div>
                 <button onClick={handleEditPost}>Edit</button>
