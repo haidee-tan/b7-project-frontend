@@ -24,16 +24,24 @@ const PostList = (props) => {
         console.log("hello")
     }, [name, description, availability, price, quantity, photo])
 
-    let handleSavePost = () => {
-        let editedPost = {
-            name: editPostName,
-            description: editPostDescription,
-            availability: editPostAvailability,
-            price: editPostPrice,
-            quantity: editPostQuantity,
-            photo: editPostPhoto,
-        }
-        Axios.put(props.axiosPort + "posts/" + props.post._id, editedPost)
+    let handleSavePost = (e) => {
+        e.preventDefault();
+        let formEditData = new FormData();
+        formEditData.append('name', editPostName)
+        formEditData.append('description', editPostDescription)
+        formEditData.append('availability', editPostAvailability)
+        formEditData.append('price', editPostPrice)
+        formEditData.append('photo', photo)
+        formEditData.append('quantity', editPostQuantity)
+        // let editedPost = {
+        //     name: editPostName,
+        //     description: editPostDescription,
+        //     availability: editPostAvailability,
+        //     price: editPostPrice,
+        //     quantity: editPostQuantity,
+        //     photo: editPostPhoto,
+        // }
+        Axios.put(props.axiosPort + "posts/" + props.post._id, formEditData, {headers:{'content-type': 'multipart/form-data'}})
         .then (res => {
             props.editPost(res.data);
             setEnableEdit(false);
@@ -112,8 +120,9 @@ const PostList = (props) => {
                     <input 
                         type="file"  
                         name='photo' 
-                        onChange={e => setEditPostPhoto(e.target.files[0])}
+                        onChange={e => setEditPostPhoto(e.target.files[1])}
                         disabled={!enableEdit}
+                        accept = "image/*"
                     />
                     : null
                 }

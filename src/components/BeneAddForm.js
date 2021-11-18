@@ -13,13 +13,22 @@ const BeneAddForm = (props) => {
     // let [active, setActive] = useState(true)
 
     let handleAdd = (e) => {
-        Axios.post(props.axiosPort + 'beneficiaries/', 
-            {name, 
-            address, 
-            contactNum, 
-            description, 
-            website, 
-            photo})
+        e.preventDefault();
+        let formData = new FormData();
+        formData.append('name', name)
+        formData.append('address', address)
+        formData.append('contactNum', contactNum)
+        formData.append('description', description)
+        formData.append('website', website)
+        formData.append('photo', photo)
+
+        Axios.post(props.axiosPort + 'beneficiaries/', formData, {headers:{'content-type': 'multipart/form-data'}} )
+            // {name, 
+            // address, 
+            // contactNum, 
+            // description, 
+            // website, 
+            // photo})
         .then(res => {
             props.addBeneficiary(res.data)
         })
@@ -83,15 +92,16 @@ const BeneAddForm = (props) => {
                         <input
                             className="addBenePhoto inputBene"
                             type="file"
-                            value={photo}
-                            onChange={e => setPhoto(e.target.value)}
+                            name="photo"
+                            accept="image/*"
+                            onChange={e => setPhoto(e.target.files[0])}
                         />
-                    </form>
                     <button
                         className="beneAddBtn"
                         onClick={handleAdd}
                     >+Beneficiary
                     </button>
+                    </form>
                 </div>
             </div>
         </div>

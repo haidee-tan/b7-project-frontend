@@ -10,10 +10,7 @@ const PostAddForm = (props) => {
     let [price, setPrice] = useState('')
     let [photo, setPhoto] = useState('')
     let [quantity, setQuantity] = useState('')
-    // let [fileData, setFileData] = useState('')
 
-    // const data = new FormData();
-    // data.append('img', fileData)?
 
     let handleAddPost = (e) => {
         e.preventDefault();
@@ -31,6 +28,7 @@ const PostAddForm = (props) => {
     }
 
     return (
+        <>
         <div>
             {/* UPLOADING IMAGE IS NOT SAVED IN THE PUBLIC FOLDER IN BE */}
             {/* ALL SUBMITTED DATA IS REFLECTED IN BE*/}
@@ -79,10 +77,11 @@ const PostAddForm = (props) => {
                     accept = "image/*"
                     placeholder = "Upload Photos"
                 />
-                {/* <input type="submit"/> */}
+
             <button type="button" onClick={handleAddPost}>Submit</button>
             </form>
         </div>
+        </>
     )
 }
 
