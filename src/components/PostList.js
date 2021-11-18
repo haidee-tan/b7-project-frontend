@@ -46,7 +46,7 @@ const PostList = (props) => {
             props.editPost(res.data);
             setEnableEdit(false);
         })
-    }
+
     let handleDelPost = () => {
         Axios.delete(props.axiosPort + "posts/" + props.post._id)
         .then(res => {
@@ -120,9 +120,10 @@ const PostList = (props) => {
                     <input 
                         type="file"  
                         name='photo' 
-                        onChange={e => setEditPostPhoto(e.target.files[1])}
+                        onChange={e => setEditPostPhoto(e.target.files[0])}
                         disabled={!enableEdit}
                         accept = "image/*"
+                        key = {editPostPhoto}
                     />
                     : null
                 }

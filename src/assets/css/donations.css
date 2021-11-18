@@ -1,3 +1,11 @@
 .donation-img > img {
   width: 150px;
 }
+.donation-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.donation-row img {
+  width: 100px;
+}

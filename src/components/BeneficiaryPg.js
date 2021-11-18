@@ -21,7 +21,7 @@ const BeneficiaryPg = ({axiosPort, setBeneficiary, beneficiaries}) => {
             </div>
             <div>
                 {beneficiaries.map (beneficiary =>
-                    <BeneficiaryList beneficiary={beneficiary} key={beneficiary.name}/>
+                    <BeneficiaryList beneficiary={beneficiary} key={beneficiary._id}/>
                 )}
             </div>
         </div>
