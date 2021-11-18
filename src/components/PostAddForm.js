@@ -24,7 +24,7 @@ const PostAddForm = (props) => {
             quantity, 
             photos
         }
-        Axios.post(props.axiosPort + "posts/", newPost, {headers:{'content-type': 'multipart/form-data'}})
+        Axios.post(props.axiosPort + "posts/", newPost, )
         .then (res => {
             props.addPost(res.data)
         })
@@ -74,8 +74,9 @@ const PostAddForm = (props) => {
                     placeholder = "Upload Photos"
                     multiple
                 />
+                <input type="submit"> SUBMIT</input>
+            {/* <button onClick={handleAddPost}>Submit</button> */}
             </form>
-            <button onClick={handleAddPost}>Submit</button>
         </div>
     )
 }
