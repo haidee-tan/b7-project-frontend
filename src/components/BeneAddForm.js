@@ -83,8 +83,14 @@ const BeneAddForm = (props) => {
                         <input
                             className="addBenePhoto inputBene"
                             type="file"
+<<<<<<< Updated upstream
                             value={photo}
                             onChange={e => setPhoto(e.target.value)}
+=======
+                            name="photo"
+                            accept="image/*"
+                            onChange={e => setPhoto(e.target.files[1])}
+>>>>>>> Stashed changes
                         />
                     </form>
                     <button

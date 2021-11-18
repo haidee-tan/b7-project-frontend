@@ -114,6 +114,11 @@ const PostList = (props) => {
                         name='photo' 
                         onChange={e => setEditPostPhoto(e.target.files[0])}
                         disabled={!enableEdit}
+<<<<<<< Updated upstream
+=======
+                        accept = "image/*"
+                        key = {editPostPhoto}
+>>>>>>> Stashed changes
                     />
                     : null
                 }
