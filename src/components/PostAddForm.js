@@ -62,7 +62,6 @@ const PostAddForm = (props) => {
                 />
                 <input 
                     type="file"
-                    value = {photo}
                     onChange = {e => setPhoto(e.target.value)}
                     placeholder = "Upload Photos"
                 />

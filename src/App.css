@@ -51,6 +51,15 @@
   margin: 5px;
 }
 
+/* LOG IN */
+.logInBox {
+  margin: 10px;
+  padding: 15px;
+  border: 2px solid black;
+  width: fit-content;
+  background-color: lightskyblue;
+}
+
 
 
 @media only screen and (min-width: 556px) {

@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import BeneficiaryPg from "./BeneficiaryPg";
 import PostPg from './PostPg';
 import SignUp from './SignUp';
+import LogIn from "./Login";
 
 import "../assets/css/home.css"
 import "../assets/css/footer.css"
@@ -14,13 +15,20 @@ const Kaserolla = ({activePage}) => {
         <div>
             <Nav />
             <Route path="/" component={Home} exact/>
+
             <Route path="/beneficiaries" component={BeneficiaryPg} />
+
             <Route path="/posts" component={PostPg} />
+
             <Route path="/donations" component="" />
+
             <Route path="/deliveries" component="" />
+
             <Route path="/usermgt" component="" />
+
             <Route path="/signup" component={SignUp} />
-            <Route path="/login" component="" />
+            
+            <Route path="/login" component={LogIn} />
             <Footer />
         </div>
     )

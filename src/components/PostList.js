@@ -57,6 +57,7 @@ const PostList = (props) => {
             </div>
             <div>
                 <div>{props.post.photo}</div>
+                
                 <input type="file" onChange={e => setEditPostPhoto(e.target.value)} />
             </div>
             <div>
