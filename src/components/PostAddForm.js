@@ -28,13 +28,17 @@ const PostAddForm = (props) => {
     }
 
     return (
+<<<<<<< HEAD
         <>
         <div>
             {/* UPLOADING IMAGE IS NOT SAVED IN THE PUBLIC FOLDER IN BE */}
             {/* ALL SUBMITTED DATA IS REFLECTED IN BE*/}
             {/* SET TO MULTIPLE UPLOADS */}
+=======
+        <div >
+>>>>>>> create-log-in-branch
             <div>Create new post</div>
-            <form>
+            <form className="postAddForm">
                 <input 
                     type="text"
                     value = {name}
@@ -72,9 +76,13 @@ const PostAddForm = (props) => {
                 />
                 <input 
                     type="file"
+<<<<<<< HEAD
                     name='photo'
                     onChange = {e => setPhoto(e.target.files[0])}
                     accept = "image/*"
+=======
+                    onChange = {e => setPhoto(e.target.value)}
+>>>>>>> create-log-in-branch
                     placeholder = "Upload Photos"
                 />
 

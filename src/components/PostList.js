@@ -110,6 +110,7 @@ const PostList = (props) => {
                 />
             </div>
             <div>
+<<<<<<< HEAD
                 <div className="post-img">
                     <img 
                         src={props.axiosPort + props.post.photo}
@@ -128,6 +129,11 @@ const PostList = (props) => {
                     />
                     : null
                 }
+=======
+                <div>{props.post.photo}</div>
+                
+                <input type="file" onChange={e => setEditPostPhoto(e.target.value)} />
+>>>>>>> create-log-in-branch
             </div>
             <div>
                 {
