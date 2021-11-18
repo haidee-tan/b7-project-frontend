@@ -92,21 +92,10 @@ const BeneAddForm = (props) => {
                         <input
                             className="addBenePhoto inputBene"
                             type="file"
-<<<<<<< HEAD
                             name="photo"
                             accept="image/*"
-                            onChange={e => setPhoto(e.target.files[0])}
-=======
-<<<<<<< Updated upstream
-                            value={photo}
-                            onChange={e => setPhoto(e.target.value)}
-=======
-                            name="photo"
-                            accept="image/*"
-                            onChange={e => setPhoto(e.target.files[1])}
->>>>>>> Stashed changes
->>>>>>> create-donations
-                        />
+                            onChange={e => setPhoto(e.target.files[0])} />
+
                     <button
                         className="beneAddBtn"
                         onClick={handleAdd}

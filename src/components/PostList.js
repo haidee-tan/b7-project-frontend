@@ -67,6 +67,7 @@ const PostList = (props) => {
     }
 
     return (
+        <>
         <div>
             <div>Name: 
                 <input 
@@ -137,11 +138,14 @@ const PostList = (props) => {
                 }
                 <button onClick={handleDelPost}>Delete</button>
             </div>
+            
             <div>
                 {!props.modalDisp ? <button onClick={handleDonateBtn}>Donate</button> : null}
             </div>
         </div>
-    )
+        </>
+        )
+    }
 }
 
 const mapStateToProps = (state) => {
