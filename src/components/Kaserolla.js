@@ -8,11 +8,8 @@ import Footer from "./Footer";
 import BeneficiaryPg from "./BeneficiaryPg";
 import PostPg from './PostPg';
 import SignUp from './SignUp';
-<<<<<<< HEAD
-import Donations from "./Donations";
-=======
 import LogIn from "./Login";
->>>>>>> create-log-in-branch
+import Donation from "./Donation";
 
 import "../assets/css/home.css"
 import "../assets/css/posts.css"
@@ -26,7 +23,6 @@ const Kaserolla = ({axiosPort, setBeneficiary, beneficiaries}) => {
                 setBeneficiary(res.data);
         })
     }, [axiosPort, setBeneficiary])
-
     return ( 
         <div>
             <Nav />
@@ -35,20 +31,15 @@ const Kaserolla = ({axiosPort, setBeneficiary, beneficiaries}) => {
             <Route path="/beneficiaries" component={BeneficiaryPg} />
 
             <Route path="/posts" component={PostPg} />
-<<<<<<< HEAD
-            <Route path="/donations" component={Donations} />
-=======
 
-            <Route path="/donations" component="" />
+            <Route path="/donations" component={Donation} />
 
-            <Route path="/deliveries" component="" />
-
->>>>>>> create-log-in-branch
             <Route path="/usermgt" component="" />
 
             <Route path="/signup" component={SignUp} />
             
             <Route path="/login" component={LogIn} />
+            
             <Footer />
         </div>
     )

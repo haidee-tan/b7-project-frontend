@@ -23,33 +23,13 @@ const BeneAddForm = (props) => {
         formData.append('photo', photo)
 
         Axios.post(props.axiosPort + 'beneficiaries/', formData, {headers:{'content-type': 'multipart/form-data'}} )
-            // {name, 
-            // address, 
-            // contactNum, 
-            // description, 
-            // website, 
-            // photo})
         .then(res => {
             props.addBeneficiary(res.data)
         })
     }
     
-    // let hideShowForm = () => {
-    //     let beneForm = document.getElementsByClassName('beneForm');
-    //     if(beneForm.style.display === "block") {
-    //         beneForm.style.display = "none"
-    //     } else {
-    //         beneForm.style.display = "block"
-    //     }
-    // }
-    
     return (
         <div>
-            {/* <button
-            className="beneAddBtn"
-            onClick={hideShowForm}>
-                +Beneficiary
-            </button> */}
             <div className="beneContainer">
                 <div className="beneBox">
                     <form className="beneForm">

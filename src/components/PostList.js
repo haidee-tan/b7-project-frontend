@@ -33,14 +33,7 @@ const PostList = (props) => {
         formEditData.append('price', editPostPrice)
         formEditData.append('photo', photo)
         formEditData.append('quantity', editPostQuantity)
-        // let editedPost = {
-        //     name: editPostName,
-        //     description: editPostDescription,
-        //     availability: editPostAvailability,
-        //     price: editPostPrice,
-        //     quantity: editPostQuantity,
-        //     photo: editPostPhoto,
-        // }
+
         Axios.put(props.axiosPort + "posts/" + props.post._id, formEditData, {headers:{'content-type': 'multipart/form-data'}})
         .then (res => {
             props.editPost(res.data);
@@ -77,6 +70,7 @@ const PostList = (props) => {
                     disabled={!enableEdit} 
                 />
             </div>
+
             <div>Description: 
                 <input 
                     type="text" 
@@ -85,6 +79,7 @@ const PostList = (props) => {
                     disabled={!enableEdit} 
                 />
             </div>
+
             <div>Availability: 
                 <input 
                     type="text" 
@@ -93,6 +88,7 @@ const PostList = (props) => {
                     disabled={!enableEdit} 
                 />
             </div>
+
             <div>Price: 
                 <input 
                     type="number" 
@@ -101,6 +97,7 @@ const PostList = (props) => {
                     disabled={!enableEdit} 
                 />
             </div>
+
             <div>Quantity: 
                 <input 
                     type="number" 
@@ -109,8 +106,8 @@ const PostList = (props) => {
                     disabled={!enableEdit} 
                 />
             </div>
+            
             <div>
-<<<<<<< HEAD
                 <div className="post-img">
                     <img 
                         src={props.axiosPort + props.post.photo}
@@ -129,11 +126,6 @@ const PostList = (props) => {
                     />
                     : null
                 }
-=======
-                <div>{props.post.photo}</div>
-                
-                <input type="file" onChange={e => setEditPostPhoto(e.target.value)} />
->>>>>>> create-log-in-branch
             </div>
             <div>
                 {

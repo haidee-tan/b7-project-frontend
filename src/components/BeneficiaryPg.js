@@ -1,10 +1,11 @@
 import { connect } from "react-redux";
 import Axios from "axios";
-import { useEffect } from 'react';
+import { useEffect, Fragment, useState } from 'react';
 
 // COMPONENTS
 import BeneficiaryList from "./BeneficiaryList";
 import BeneAddForm from './BeneAddForm';
+import BeneficiaryEditForm from "./BeneficiaryEditForm";
 
 const BeneficiaryPg = ({axiosPort, setBeneficiary, beneficiaries}) => {
     useEffect (() => {
@@ -14,15 +15,36 @@ const BeneficiaryPg = ({axiosPort, setBeneficiary, beneficiaries}) => {
         })
     }, [axiosPort, setBeneficiary])
 
+    let [editList, setEditList] = useState(null)
+
+    let handleEditBtn = (e, list) => {
+        e.preventDefault();
+        setEditList(list._id)
+    }
+
     return (
         <div>
             <div>
                 <BeneAddForm />
             </div>
             <div>
+
                 {beneficiaries.map (beneficiary =>
-                    <BeneficiaryList beneficiary={beneficiary} key={beneficiary._id}/>
+            <Fragment>
+                {editList === beneficiary._id ? 
+                (
+                <BeneficiaryEditForm
+                beneficiary={beneficiary}/>)
+                :
+                (
+                <BeneficiaryList 
+                beneficiary={beneficiary} 
+                handleEditBtn={handleEditBtn}
+                key={beneficiary._id}/>
                 )}
+            </Fragment>
+                )}
+
             </div>
         </div>
     )
