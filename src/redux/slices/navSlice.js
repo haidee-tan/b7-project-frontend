@@ -1,6 +1,5 @@
 const initialState = {
     axiosPort: "http://localhost:8000/",
-    activePage: "home",
 }
 
 const navSlice = (state = initialState, action) => {

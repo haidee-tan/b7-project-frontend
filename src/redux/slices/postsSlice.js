@@ -1,8 +1,10 @@
+import Lodash from "lodash";
 const initialState = {
     posts: [],
 }
 
 const postsSlice = (state = initialState, action) => {
+    let postsCopy = Lodash.cloneDeep(state.posts);
     switch(action.type) {
         case "SET_POST": {
             return {
@@ -11,30 +13,36 @@ const postsSlice = (state = initialState, action) => {
             }
         }
         case "ADD_POST": {
-            let postCopy = [...state.posts, action.payload]
+            postsCopy = [...state.posts, action.payload]
             return  {
                 ...state,
-                posts: postCopy
+                posts: postsCopy
             }
         }
         case "EDIT_POST": {
-            let postCopy = [...state.posts]
-            let index = postCopy.findIndex( (post) => post._id === action.payload._id);
+            let index = postsCopy.findIndex( (post) => post._id === action.payload._id);
             if (index !== -1)
-            postCopy[index] = action.payload
+            postsCopy[index] = action.payload
             return {
                 ...state,
-                posts: postCopy
+                posts: postsCopy
             }
         }
         case "DEL_POST": {
-            let postCopy = [...state.posts]
-            let index = postCopy.findIndex( (post) => post._id === action.payload._id);
+            let index = postsCopy.findIndex( (post) => post._id === action.payload._id);
             if ( index !== -1 )
-            postCopy.splice(index, 1)
+            postsCopy.splice(index, 1)
             return  {
                 ...state,
-                posts: postCopy
+                posts: postsCopy
+            }
+        }
+        case "ADJ_POST_QTY": {
+            let index = postsCopy.findIndex(el => el._id === action.payload._id);
+            postsCopy[index] = action.payload;
+            return {
+                ...state,
+                posts: postsCopy
             }
         }
         default: return state;

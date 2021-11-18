@@ -51,7 +51,10 @@ const SignUp = (props) => {
             }
             Axios.post(props.axiosPort + "users/signup", newUser)
             .then(res => {
-                if(res.data === "email taken") {
+                if(res.data.code === 11000) {
+                    setModalDisp(false);
+                    setModalMsg("");
+                    setAcctCreated(false);
                     setEmailErrMsg("Account already created for this email address.");
                 }
                 else {

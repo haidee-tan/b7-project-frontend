@@ -24,8 +24,6 @@ const PostAddForm = (props) => {
         formData.append('price', price)
         formData.append('photo', photo)
         formData.append('quantity', quantity)
-        console.log(formData)
-    
         Axios.post(props.axiosPort + "posts/", formData, {headers:{'content-type': 'multipart/form-data'}} )
         .then (res => {
             props.addPost(res.data)

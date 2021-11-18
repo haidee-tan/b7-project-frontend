@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Axios from "axios";
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 
 // COMPONENTS
 import BeneficiaryList from "./BeneficiaryList";

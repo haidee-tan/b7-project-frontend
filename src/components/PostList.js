@@ -1,17 +1,30 @@
 import { connect } from "react-redux";
-import { useState} from "react"
+import { useEffect, useState} from "react";
 import Axios from "axios";
 
 const PostList = (props) => {
 
-    let [editPostName, setEditPostName] = useState(props.post.name)
-    let [editPostDescription, setEditPostDescription] = useState(props.post.description)
-    let [editPostAvailability, setEditPostAvailability] = useState(props.post.availability)
-    let [editPostPrice, setEditPostPrice] = useState(props.post.price)
-    let [editPostQuantity, setEditPostQuantity] = useState(props.post.quantity)
-    let [editPostPhoto, setEditPostPhoto] = useState(props.post.photo)
+    let {name, description, availability, price, quantity, photo} = props.post;
 
-    let handleEditPost = () => {
+    let [editPostName, setEditPostName] = useState(name)
+    let [editPostDescription, setEditPostDescription] = useState(description)
+    let [editPostAvailability, setEditPostAvailability] = useState(availability)
+    let [editPostPrice, setEditPostPrice] = useState(price)
+    let [editPostQuantity, setEditPostQuantity] = useState(quantity)
+    let [editPostPhoto, setEditPostPhoto] = useState(photo)
+    let [enableEdit, setEnableEdit] = useState(false);
+
+    useEffect(() => {
+        setEditPostName(name);
+        setEditPostDescription(description);
+        setEditPostAvailability(availability);
+        setEditPostPrice(price);
+        setEditPostQuantity(quantity);
+        setEditPostPhoto(photo);
+        console.log("hello")
+    }, [name, description, availability, price, quantity, photo])
+
+    let handleSavePost = () => {
         let editedPost = {
             name: editPostName,
             description: editPostDescription,
@@ -22,49 +35,100 @@ const PostList = (props) => {
         }
         Axios.put(props.axiosPort + "posts/" + props.post._id, editedPost)
         .then (res => {
-            props.editPost(res.data)
+            props.editPost(res.data);
+            setEnableEdit(false);
         })
     }
-
     let handleDelPost = () => {
         Axios.delete(props.axiosPort + "posts/" + props.post._id)
         .then(res => {
             props.delPost(res.data)
         })
     }
+    let handleDonateBtn = () => {
+        props.setModalDisp(true);
+        props.setDonationData({
+            _id: props.post._id,
+            name: editPostName,
+            description: editPostDescription,
+            availability: editPostAvailability,
+            price: editPostPrice,
+            quantity: editPostQuantity,
+            photo: props.axiosPort + props.post.photo
+        });
+    }
 
     return (
         <div>
-            <div>
-                <div>{props.post.name}</div>
-                <input type="text" value={editPostName} onChange={e => setEditPostName(e.target.value)} />
+            <div>Name: 
+                <input 
+                    type="text" 
+                    value={editPostName} 
+                    onChange={e => setEditPostName(e.target.value)}
+                    disabled={!enableEdit} 
+                />
+            </div>
+            <div>Description: 
+                <input 
+                    type="text" 
+                    value={editPostDescription} 
+                    onChange={e => setEditPostDescription(e.target.value)}
+                    disabled={!enableEdit} 
+                />
+            </div>
+            <div>Availability: 
+                <input 
+                    type="text" 
+                    value={editPostAvailability} 
+                    onChange={e => setEditPostAvailability(e.target.value)}
+                    disabled={!enableEdit} 
+                />
+            </div>
+            <div>Price: 
+                <input 
+                    type="number" 
+                    value={editPostPrice} 
+                    onChange={e => setEditPostPrice(e.target.value)}
+                    disabled={!enableEdit} 
+                />
+            </div>
+            <div>Quantity: 
+                <input 
+                    type="number" 
+                    value={editPostQuantity} 
+                    onChange={e => setEditPostQuantity(e.target.value)}
+                    disabled={!enableEdit} 
+                />
             </div>
             <div>
-                <div>{props.post.description}</div>
-                <input type="text" value={editPostDescription} onChange={e => setEditPostDescription(e.target.value)} />
-            </div>
-            <div>
-                <div>{props.post.availability}</div>
-                <input type="text" value={editPostAvailability} onChange={e => setEditPostAvailability(e.target.value)} />
-            </div>
-            <div>
-                <div>{props.post.price}</div>
-                <input type="number" value={editPostPrice} onChange={e => setEditPostPrice(e.target.value)} />
-            </div>
-            <div>
-                <div>{props.post.quantity}</div>
-                <input type="number" value={editPostQuantity} onChange={e => setEditPostQuantity(e.target.value)} />
-            </div>
-            <div>
-                <div>
-                    <img src={props.axiosPort + props.post.photo} alt="samplePicture" />
+                <div className="post-img">
+                    <img 
+                        src={props.axiosPort + props.post.photo}
+                        alt="samplePicture"
+                    />
                 </div>
-            
-                <input type="file"  name='photo'  onChange={e => setEditPostPhoto(e.target.files[0])} />
+                {
+                    enableEdit ?
+                    <input 
+                        type="file"  
+                        name='photo' 
+                        onChange={e => setEditPostPhoto(e.target.files[0])}
+                        disabled={!enableEdit}
+                    />
+                    : null
+                }
             </div>
             <div>
-                <button onClick={handleEditPost}>Edit</button>
+                {
+                    enableEdit ?
+                    <button onClick={handleSavePost}>Save</button>
+                    :
+                    <button onClick={() => setEnableEdit(true)}>Edit</button>
+                }
                 <button onClick={handleDelPost}>Delete</button>
+            </div>
+            <div>
+                {!props.modalDisp ? <button onClick={handleDonateBtn}>Donate</button> : null}
             </div>
         </div>
     )
@@ -72,7 +136,7 @@ const PostList = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        axiosPort: state.navSlice.axiosPort
+        axiosPort: state.navSlice.axiosPort,
     }
 }
 
