@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import Axios from "axios";
+import Moment from "moment";
 
 const Donation = (props) => {
     let {createdAt, quantity, fee, beneficiary, post} = props.donation;
@@ -8,13 +9,10 @@ const Donation = (props) => {
         Axios.delete(props.axiosPort + "donations/delete/" + props.donation._id, {headers: {authorization: props.currUser.access}})
         .then(res => props.deleteDonation(res.data))
     }
-    const handleEdit = () => {
-        
-    }
 
     return (
         <div className="donation-row">
-            <div>{createdAt}</div>
+            <div>{Moment(createdAt).startOf("hour").fromNow()}</div>
             <div>
                 <img src={props.axiosPort + post.photo} alt={post.name} />
             </div>
@@ -25,7 +23,6 @@ const Donation = (props) => {
             {
                 props.currUser.role === "admin" ?
                 <div>
-                    <button onClick={handleEdit}>Edit</button>
                     <button onClick={handleDelete}>Delete</button>
                 </div>
                 : null

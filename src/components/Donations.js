@@ -27,7 +27,7 @@ const Donations = (props) => {
                     <div>Beneficiary</div>
                     <div>Donation Qty</div>
                     <div>Total Donation Amt</div>
-                    <div>Buttons</div>
+                    <div></div>
                 </div>
                 {
                     donations.map(donation =>
