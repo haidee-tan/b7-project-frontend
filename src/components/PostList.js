@@ -70,6 +70,26 @@ const PostList = (props) => {
 
     return (
         <div className="post">
+            <div>
+                <div className="post-img">
+                    <img 
+                        src={props.axiosPort + props.post.photo}
+                        alt="samplePicture"
+                    />
+                </div>
+                {/* {
+                    enableEdit ?
+                    <input 
+                        type="file"  
+                        name='photo' 
+                        onChange={e => setEditPostPhoto(e.target.files[0])}
+                        disabled={true}
+                        accept = "image/*"
+                        key = {editPostPhoto}
+                    />
+                    : null
+                } */}
+            </div>
             <div>Name: 
                 <input 
                     type="text" 
@@ -113,27 +133,6 @@ const PostList = (props) => {
                     onChange={e => setEditPostQuantity(e.target.value)}
                     disabled={true} 
                 />
-            </div>
-            
-            <div>
-                <div className="post-img">
-                    <img 
-                        src={props.axiosPort + props.post.photo}
-                        alt="samplePicture"
-                    />
-                </div>
-                {/* {
-                    enableEdit ?
-                    <input 
-                        type="file"  
-                        name='photo' 
-                        onChange={e => setEditPostPhoto(e.target.files[0])}
-                        disabled={true}
-                        accept = "image/*"
-                        key = {editPostPhoto}
-                    />
-                    : null
-                } */}
             </div>
             {
                 props.currUser.role === "admin" ?
