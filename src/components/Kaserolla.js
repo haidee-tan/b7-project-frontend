@@ -10,12 +10,16 @@ import PostPg from './PostPg';
 import SignUp from './SignUp';
 import LogIn from "./Login";
 import Donations from "./Donations";
+import Banner from "./Banner";
 
 import "../assets/css/overall.css"
 import "../assets/css/home.css"
 import "../assets/css/posts.css"
 import "../assets/css/footer.css"
 import "../assets/css/donations.css"
+import "../assets/css/banner.css"
+import "../assets/css/beneficiary.css"
+import "../assets/css/login.css"
 
 const Kaserolla = ({axiosPort, setBeneficiary, beneficiaries}) => {
     useEffect (() => {
@@ -26,6 +30,7 @@ const Kaserolla = ({axiosPort, setBeneficiary, beneficiaries}) => {
     }, [axiosPort, setBeneficiary])
     return ( 
         <div className="main-body">
+            <Banner />
             <Nav />
             <Route path="/" component={Home} exact/>
             <Route path="/beneficiaries" component={BeneficiaryPg} />
