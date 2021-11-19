@@ -7,10 +7,12 @@ import DonationForm from "./DonationForm";
 import { connect } from "react-redux";
 import Axios from "axios";
 import { useState, useEffect } from 'react';
+import Plus from "../assets/imgs/buttons/plus.png";
 
 const PostPg = ({axiosPort, setPost, posts, currUser}) => {
     let [modalDisp, setModalDisp] = useState(false);
     const [donationData, setDonationData] = useState({});
+    let [addFormDisp, setAddFormDisp] = useState(false);
 
     useEffect (() => {
         Axios.get(axiosPort + 'posts/')
@@ -21,8 +23,15 @@ const PostPg = ({axiosPort, setPost, posts, currUser}) => {
 
     return (
         <div className="post-page page">
+            {
+                !addFormDisp ?
+                <button onClick={() => setAddFormDisp(!addFormDisp)} className="show-btn">
+                    <img src={Plus} alt="plus"/>
+                </button>
+                : null
+            }
             <h2>Posts</h2>
-            {currUser.role === "partner" ? <PostAddForm /> : null}
+            {currUser.role === "partner" && addFormDisp ? <PostAddForm setAddFormDisp={setAddFormDisp}/> : null}
             <div className="posts">
                 {posts.map(post =>
                     <PostList
