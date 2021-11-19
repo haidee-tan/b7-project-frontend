@@ -1,17 +1,46 @@
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 
-const Nav = (props) => {
+const Nav = ({currUser, logoutUser}) => {
     return(
         <div>
             <Link to="/">Home</Link>
             <Link to="/beneficiaries">Beneficiaries</Link>
             <Link to="/posts">Posts</Link>
-            <Link to="/donations">My Donations</Link>
-            <Link to="/userMgt">User Mgt</Link>
-            <Link to="/signup">Sign Up</Link>
-            <Link to="/login">Login</Link>
+            <Link to="/donations">Donations</Link>
+            {
+                currUser.role === "admin" ?
+                <Link to="/userMgt">User Mgt</Link>
+                : null
+            }
+            {
+                currUser.access === "" ?
+                <>
+                    <Link to="/signup">Sign Up</Link>
+                    <Link to="/login">Login</Link>
+                </>
+                :
+                <>
+                    <span>Hello, {currUser.firstName}!</span>
+                    <button onClick={logoutUser}>Logout</button>
+                </>
+            }
         </div>
     )
 }
 
-export default Nav;
+const mapStateToProps = (state) => {
+    return {
+        currUser: state.loginSlice.currUser
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logoutUser: () => dispatch({
+            type: "LOGOUT_USER"
+        })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

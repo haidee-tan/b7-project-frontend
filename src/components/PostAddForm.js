@@ -21,14 +21,14 @@ const PostAddForm = (props) => {
         formData.append('price', price)
         formData.append('photo', photo)
         formData.append('quantity', quantity)
-        Axios.post(props.axiosPort + "posts/", formData, {headers:{'content-type': 'multipart/form-data'}} )
-        .then (res => {
+        Axios.post(props.axiosPort + "posts/", formData, {headers:{'content-type': 'multipart/form-data'}})
+        .then(res => {
             props.addPost(res.data)
         })
+        .catch((res) => console.log(res.data))
     }
 
     return (
-        <>
         <div >
             <div>Create new post</div>
             <form className="postAddForm">
@@ -78,7 +78,6 @@ const PostAddForm = (props) => {
             <button type="button" onClick={handleAddPost}>Submit</button>
             </form>
         </div>
-        </>
     )
 }
 

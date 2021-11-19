@@ -14,8 +14,8 @@ const PostPg = ({axiosPort, setPost, posts}) => {
 
     useEffect (() => {
         Axios.get(axiosPort + 'posts/')
-            .then(res => {
-                setPost(res.data);
+        .then(res => {
+            setPost(res.data);
         })
     }, [axiosPort, setPost])
 
@@ -24,7 +24,7 @@ const PostPg = ({axiosPort, setPost, posts}) => {
             <div>
                 <PostAddForm />
             </div>
-            <div>
+            <div className="posts">
                 {posts.map(post =>
                     <PostList
                         post = {post}

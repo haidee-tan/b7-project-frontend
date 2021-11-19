@@ -1,3 +1,11 @@
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.post {
+  border: 1px solid rgb(148, 148, 148);
+}
 .post-img > img {
   width: 150px;
 }

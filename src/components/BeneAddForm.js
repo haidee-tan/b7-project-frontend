@@ -22,7 +22,10 @@ const BeneAddForm = (props) => {
         formData.append('website', website)
         formData.append('photo', photo)
 
-        Axios.post(props.axiosPort + 'beneficiaries/', formData, {headers:{'content-type': 'multipart/form-data'}} )
+        Axios.post(props.axiosPort + 'beneficiaries/', formData, {headers: {
+            'content-type': 'multipart/form-data',
+            authorization: props.currUser.access
+        }})
         .then(res => {
             props.addBeneficiary(res.data)
         })
@@ -91,6 +94,7 @@ const BeneAddForm = (props) => {
 const mapStateToProps = (state) => {
     return {
         axiosPort: state.navSlice.axiosPort,
+        currUser: state.loginSlice.currUser
     }
 }
     
