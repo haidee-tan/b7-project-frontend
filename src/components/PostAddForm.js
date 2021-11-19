@@ -27,13 +27,14 @@ const PostAddForm = (props) => {
             authorization: props.currUser.access
         }})
         .then(res => {
-            props.addPost(res.data)
+            props.addPost(res.data);
+            props.setAddFormDisp(false);
         })
         .catch((res) => console.log(res.data))
     }
 
     return (
-        <div className="add-new-post">
+        <div className="add-new-post modal">
             <h3>Create new post</h3>
             <p>Let's stuff the Kaserolla and roll these food to others!</p>
             <form className="post-add-form">

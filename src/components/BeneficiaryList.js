@@ -1,17 +1,15 @@
 // 
 import { connect } from "react-redux";
-import Axios from "axios";
 
 const BeneficiaryList = (props) => {
 
-    let handleDel = () => {
-        Axios.delete(props.axiosPort + 'beneficiaries/delete/' + props.beneficiary._id, {headers: {authorization: props.currUser.access}})
-        .then(res => props.delBeneficiary(res.data))
-    }
+    // let handleDel = () => {
+    //     Axios.delete(props.axiosPort + 'beneficiaries/delete/' + props.beneficiary._id, {headers: {authorization: props.currUser.access}})
+    //     .then(res => props.delBeneficiary(res.data))
+    // }
 
     let beneficiary = props.beneficiary
 
-    
     return (
         <div className="beneListContainer">
             <div className="beneListBox">
@@ -48,11 +46,6 @@ const BeneficiaryList = (props) => {
                         className="beneEditBtn"
                         onClick={(e) => props.handleEditBtn(e, beneficiary)}
                     >Edit
-                    </button>
-                    <button 
-                        className="beneDelBtn"
-                        onClick={handleDel}
-                    >Delete
                     </button>
                 </div>
                 : null

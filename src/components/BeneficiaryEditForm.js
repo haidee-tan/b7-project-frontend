@@ -13,6 +13,9 @@ const BeneficiaryEditForm = (props) => {
     
     let handleEdit = (e) => {
         e.preventDefault();
+        if (photo === null) {
+            return
+        }
         let editBeneficiaryData = new FormData();
         editBeneficiaryData.append('name', beneficiaryName)
         editBeneficiaryData.append('address', beneficiaryAddress)

@@ -49,8 +49,12 @@ const PostList = (props) => {
         //     setEnableEdit(false);
         // })
     }
+    let handleCancelBtn = () => {
+        setEditStatus(status);
+        setEnableEdit(false);
+    }
     let handleDelPost = () => {
-        Axios.delete(props.axiosPort + "posts/" + props.post._id)
+        Axios.delete(props.axiosPort + "posts/" + props.post._id, {headers: {authorization: props.currUser.access}})
         .then(res => {
             props.delPost(res.data)
         })
@@ -70,7 +74,7 @@ const PostList = (props) => {
 
     return (
         <div className="post">
-            <div>
+            <div className="post-img-div">
                 <div className="post-img">
                     <img 
                         src={props.axiosPort + props.post.photo}
@@ -85,7 +89,6 @@ const PostList = (props) => {
                         onChange={e => setEditPostPhoto(e.target.files[0])}
                         disabled={true}
                         accept = "image/*"
-                        key = {editPostPhoto}
                     />
                     : null
                 } */}
@@ -99,7 +102,7 @@ const PostList = (props) => {
                 />
             </div>
 
-            <div>Description: 
+            <div className="description">Description: 
                 <input 
                     type="text" 
                     value={editPostDescription} 
@@ -136,22 +139,31 @@ const PostList = (props) => {
             </div>
             {
                 props.currUser.role === "admin" ?
-                <div>
-                    <select value={editStatus} onChange={e => setEditStatus(e.target.value)} disabled={!enableEdit}>
-                        <option>active</option>
-                        <option>cancelled</option>
-                    </select>
-                    {
-                        enableEdit ?
-                        <button onClick={handleSavePost}>Save</button>
-                        :
-                        <button onClick={() => setEnableEdit(true)}>Edit</button>
-                    }
-                    <button onClick={handleDelPost}>Delete</button>
-                </div>
+                <>
+                    <div>Status:
+                        <select value={editStatus} onChange={e => setEditStatus(e.target.value)} disabled={!enableEdit}>
+                            <option>active</option>
+                            <option>inactive</option>
+                        </select>
+                    </div>
+                    <div className="btn-box">
+                        {
+                            enableEdit ?
+                            <>
+                                <button onClick={handleSavePost}>Save</button>
+                                <button onClick={handleCancelBtn}>Cancel</button>
+                            </>
+                            :
+                            <>
+                                <button onClick={() => setEnableEdit(true)}>Edit</button>
+                                <button onClick={handleDelPost}>Delete</button>
+                            </>
+                        }
+                    </div>
+                </>
                 : null
             }
-            <div>
+            <div className="btn-box">
                 {!props.modalDisp && (props.currUser.role === "sponsor" || props.currUser.role === "partner") ?
                 <button onClick={handleDonateBtn}>Donate</button>
                 : null}

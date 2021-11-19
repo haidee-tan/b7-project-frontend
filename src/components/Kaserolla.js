@@ -36,7 +36,6 @@ const Kaserolla = ({axiosPort, setBeneficiary, beneficiaries}) => {
             <Route path="/beneficiaries" component={BeneficiaryPg} />
             <Route path="/posts" component={PostPg} />
             <Route path="/donations" component={Donations} />
-            <Route path="/usermgt" component="" />
             <Route path="/signup" component={SignUp} />
             <Route path="/login" component={LogIn} />
             <Footer />

@@ -39,15 +39,13 @@ const SignUp = (props) => {
             passwordConfirm.trim() !== "" &&
             password === passwordConfirm
         ) {
-            let status;
-            role === "sponsor" ?  status = "active" : status = "for approval";
             let newUser = {
                 firstName,
                 lastName,
                 email,
                 role,
                 password,
-                status
+                status: "active"
             }
             Axios.post(props.axiosPort + "users/signup", newUser)
             .then(res => {
@@ -58,9 +56,18 @@ const SignUp = (props) => {
                     setEmailErrMsg("Account already created for this email address.");
                 }
                 else {
+                    console.log(res.data)
                     setModalDisp(true);
                     setModalMsg("Account created successfully.");
                     setAcctCreated(true);
+                    let loginUser = {
+                        role: res.data.role,
+                        access: res.data.access,
+                        email: res.data.email,
+                        status: res.data.status,
+                        firstName: res.data.firstName
+                    }
+                    props.userInfo(loginUser);
                 }
             })
             setModalDisp(true);
@@ -78,7 +85,7 @@ const SignUp = (props) => {
         setModalMsg("");
         setModalDisp(false);
         setAcctCreated(false);
-        // log in user. route to home page.
+        return window.location.replace("/");
     }
 
     return (
@@ -141,5 +148,12 @@ const mapStateToProps = (state) => {
         axiosPort: state.navSlice.axiosPort
     }
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        userInfo: (user) => dispatch({
+            type: 'SET_USER_INFO', payload: user
+        })
+    }
+}
 
-export default connect(mapStateToProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
