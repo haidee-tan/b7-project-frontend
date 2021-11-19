@@ -82,7 +82,7 @@ const SignUp = (props) => {
     }
 
     return (
-        <div id="sign-up">
+        <div id="sign-up" className="page">
             <h2>Create an account today.</h2>
             <div>
                 <div>First Name</div>

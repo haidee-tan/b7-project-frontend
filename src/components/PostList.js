@@ -75,7 +75,7 @@ const PostList = (props) => {
                     type="text" 
                     value={editPostName} 
                     onChange={e => setEditPostName(e.target.value)}
-                    disabled="true" 
+                    disabled={true} 
                 />
             </div>
 
@@ -84,7 +84,7 @@ const PostList = (props) => {
                     type="text" 
                     value={editPostDescription} 
                     onChange={e => setEditPostDescription(e.target.value)}
-                    disabled="true" 
+                    disabled={true} 
                 />
             </div>
 
@@ -93,7 +93,7 @@ const PostList = (props) => {
                     type="text" 
                     value={Moment(editPostAvailability).format("MMM-DD-YY")} 
                     onChange={e => setEditPostAvailability(e.target.value)}
-                    disabled="true" 
+                    disabled={true} 
                 />
             </div>
 
@@ -102,7 +102,7 @@ const PostList = (props) => {
                     type="number" 
                     value={editPostPrice} 
                     onChange={e => setEditPostPrice(e.target.value)}
-                    disabled="true" 
+                    disabled={true} 
                 />
             </div>
 
@@ -111,7 +111,7 @@ const PostList = (props) => {
                     type="number" 
                     value={editPostQuantity} 
                     onChange={e => setEditPostQuantity(e.target.value)}
-                    disabled="true" 
+                    disabled={true} 
                 />
             </div>
             
@@ -128,7 +128,7 @@ const PostList = (props) => {
                         type="file"  
                         name='photo' 
                         onChange={e => setEditPostPhoto(e.target.files[0])}
-                        disabled="true"
+                        disabled={true}
                         accept = "image/*"
                         key = {editPostPhoto}
                     />

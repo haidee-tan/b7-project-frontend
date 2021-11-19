@@ -33,7 +33,7 @@ const BeneAddForm = (props) => {
     
     return (
         <div>
-            <div className="beneContainer">
+            <div className="beneContainer addform">
                 <div className="beneBox">
                     <form className="beneForm">
                         Name:

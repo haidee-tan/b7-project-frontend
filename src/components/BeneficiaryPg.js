@@ -23,11 +23,11 @@ const BeneficiaryPg = ({axiosPort, setBeneficiary, beneficiaries, currUser}) => 
     }
 
     return (
-        <div>
+        <div className="page">
             {currUser.role === "admin" ? <BeneAddForm /> : null}
             <div>
                 {beneficiaries.map (beneficiary =>
-                    <Fragment>
+                    <Fragment key={beneficiary._id}>
                         {
                             editList === beneficiary._id ? 
                             <BeneficiaryEditForm
@@ -39,7 +39,7 @@ const BeneficiaryPg = ({axiosPort, setBeneficiary, beneficiaries, currUser}) => 
                             <BeneficiaryList 
                                 beneficiary={beneficiary} 
                                 handleEditBtn={handleEditBtn}
-                                key={beneficiary._id}
+                                key={beneficiary.name}
                             />
                         }
                     </Fragment>

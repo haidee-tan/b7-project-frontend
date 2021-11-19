@@ -11,6 +11,7 @@ import SignUp from './SignUp';
 import LogIn from "./Login";
 import Donations from "./Donations";
 
+import "../assets/css/overall.css"
 import "../assets/css/home.css"
 import "../assets/css/posts.css"
 import "../assets/css/footer.css"
@@ -24,7 +25,7 @@ const Kaserolla = ({axiosPort, setBeneficiary, beneficiaries}) => {
         })
     }, [axiosPort, setBeneficiary])
     return ( 
-        <div>
+        <div className="main-body">
             <Nav />
             <Route path="/" component={Home} exact/>
             <Route path="/beneficiaries" component={BeneficiaryPg} />

@@ -6,12 +6,19 @@ const Nav = ({currUser, logoutUser}) => {
         <div>
             <Link to="/">Home</Link>
             <Link to="/beneficiaries">Beneficiaries</Link>
-            <Link to="/posts">Posts</Link>
-            <Link to="/donations">Donations</Link>
             {
-                currUser.role === "admin" ?
-                <Link to="/userMgt">User Mgt</Link>
-                : null
+                currUser.role === null || currUser.role === "" ?
+                null
+                :
+                <>
+                    <Link to="/posts">Posts</Link>
+                    <Link to="/donations">Donations</Link>
+                </>
+            }
+            {
+                // currUser.role === "admin" ?
+                // <Link to="/userMgt">User Mgt</Link>
+                // : null
             }
             {
                 currUser.access === "" ?

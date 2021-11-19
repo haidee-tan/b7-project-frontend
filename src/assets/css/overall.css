@@ -1,0 +1,12 @@
+body {
+  background-color: #ececec;
+}
+.main-body {
+  max-width: 1000px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: white;
+}
+.page {
+  padding: 15px;
+}
