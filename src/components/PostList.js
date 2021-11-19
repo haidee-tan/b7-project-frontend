@@ -1,17 +1,19 @@
 import { connect } from "react-redux";
 import { useEffect, useState} from "react";
 import Axios from "axios";
+import Moment from "moment";
 
 const PostList = (props) => {
 
-    let {name, description, availability, price, quantity, photo} = props.post;
+    let {name, description, availability, price, quantity, photo, status} = props.post;
 
     let [editPostName, setEditPostName] = useState(name)
     let [editPostDescription, setEditPostDescription] = useState(description)
     let [editPostAvailability, setEditPostAvailability] = useState(availability)
     let [editPostPrice, setEditPostPrice] = useState(price)
     let [editPostQuantity, setEditPostQuantity] = useState(quantity)
-    let [editPostPhoto, setEditPostPhoto] = useState(photo)
+    // let [editPostPhoto, setEditPostPhoto] = useState(photo)
+    let [editStatus, setEditStatus] = useState(status)
     let [enableEdit, setEnableEdit] = useState(false);
 
     useEffect(() => {
@@ -20,24 +22,32 @@ const PostList = (props) => {
         setEditPostAvailability(availability);
         setEditPostPrice(price);
         setEditPostQuantity(quantity);
-        setEditPostPhoto(photo);
+        // setEditPostPhoto(photo);
     }, [name, description, availability, price, quantity, photo])
 
     let handleSavePost = (e) => {
-        e.preventDefault();
-        let formEditData = new FormData();
-        formEditData.append('name', editPostName)
-        formEditData.append('description', editPostDescription)
-        formEditData.append('availability', editPostAvailability)
-        formEditData.append('price', editPostPrice)
-        formEditData.append('photo', photo)
-        formEditData.append('quantity', editPostQuantity)
 
-        Axios.put(props.axiosPort + "posts/" + props.post._id, formEditData, {headers:{'content-type': 'multipart/form-data'}})
+        Axios.put(props.axiosPort + "posts/" + props.post._id, {status: editStatus}, {headers:{authorization: props.currUser.access}})
         .then (res => {
             props.editPost(res.data);
             setEnableEdit(false);
         })
+
+        // e.preventDefault();
+        // let formEditData = new FormData();
+        // formEditData.append('name', editPostName)
+        // formEditData.append('description', editPostDescription)
+        // formEditData.append('availability', editPostAvailability)
+        // formEditData.append('price', editPostPrice)
+        // formEditData.append('photo', photo)
+        // formEditData.append('quantity', editPostQuantity)
+        // formEditData.append('status', "active")
+
+        // Axios.put(props.axiosPort + "posts/" + props.post._id, formEditData, {headers:{'content-type': 'multipart/form-data'}})
+        // .then (res => {
+        //     props.editPost(res.data);
+        //     setEnableEdit(false);
+        // })
     }
     let handleDelPost = () => {
         Axios.delete(props.axiosPort + "posts/" + props.post._id)
@@ -65,7 +75,7 @@ const PostList = (props) => {
                     type="text" 
                     value={editPostName} 
                     onChange={e => setEditPostName(e.target.value)}
-                    disabled={!enableEdit} 
+                    disabled="true" 
                 />
             </div>
 
@@ -74,16 +84,16 @@ const PostList = (props) => {
                     type="text" 
                     value={editPostDescription} 
                     onChange={e => setEditPostDescription(e.target.value)}
-                    disabled={!enableEdit} 
+                    disabled="true" 
                 />
             </div>
 
-            <div>Availability: 
+            <div>Available until: 
                 <input 
                     type="text" 
-                    value={editPostAvailability} 
+                    value={Moment(editPostAvailability).format("MMM-DD-YY")} 
                     onChange={e => setEditPostAvailability(e.target.value)}
-                    disabled={!enableEdit} 
+                    disabled="true" 
                 />
             </div>
 
@@ -92,7 +102,7 @@ const PostList = (props) => {
                     type="number" 
                     value={editPostPrice} 
                     onChange={e => setEditPostPrice(e.target.value)}
-                    disabled={!enableEdit} 
+                    disabled="true" 
                 />
             </div>
 
@@ -101,7 +111,7 @@ const PostList = (props) => {
                     type="number" 
                     value={editPostQuantity} 
                     onChange={e => setEditPostQuantity(e.target.value)}
-                    disabled={!enableEdit} 
+                    disabled="true" 
                 />
             </div>
             
@@ -112,29 +122,36 @@ const PostList = (props) => {
                         alt="samplePicture"
                     />
                 </div>
-                {
+                {/* {
                     enableEdit ?
                     <input 
                         type="file"  
                         name='photo' 
                         onChange={e => setEditPostPhoto(e.target.files[0])}
-                        disabled={!enableEdit}
+                        disabled="true"
                         accept = "image/*"
                         key = {editPostPhoto}
                     />
                     : null
-                }
+                } */}
             </div>
-            <div>
-                {
-                    enableEdit ?
-                    <button onClick={handleSavePost}>Save</button>
-                    :
-                    <button onClick={() => setEnableEdit(true)}>Edit</button>
-                }
-                <button onClick={handleDelPost}>Delete</button>
-            </div>
-            
+            {
+                props.currUser.role === "admin" ?
+                <div>
+                    <select value={editStatus} onChange={e => setEditStatus(e.target.value)} disabled={!enableEdit}>
+                        <option>active</option>
+                        <option>cancelled</option>
+                    </select>
+                    {
+                        enableEdit ?
+                        <button onClick={handleSavePost}>Save</button>
+                        :
+                        <button onClick={() => setEnableEdit(true)}>Edit</button>
+                    }
+                    <button onClick={handleDelPost}>Delete</button>
+                </div>
+                : null
+            }
             <div>
                 {!props.modalDisp && (props.currUser.role === "sponsor" || props.currUser.role === "partner") ?
                 <button onClick={handleDonateBtn}>Donate</button>

@@ -17,7 +17,7 @@ const PostPg = ({axiosPort, setPost, posts}) => {
         .then(res => {
             setPost(res.data);
         })
-    }, [axiosPort, setPost])
+    }, [axiosPort, setPost, posts])
 
     return (
         <div>

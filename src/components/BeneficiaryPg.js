@@ -13,7 +13,7 @@ const BeneficiaryPg = ({axiosPort, setBeneficiary, beneficiaries, currUser}) => 
             .then(res => {
                 setBeneficiary(res.data);
         })
-    }, [axiosPort, setBeneficiary])
+    }, [axiosPort, setBeneficiary, beneficiaries])
 
     let [editList, setEditList] = useState(null)
 

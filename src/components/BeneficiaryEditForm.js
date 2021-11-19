@@ -8,6 +8,7 @@ const BeneficiaryEditForm = (props) => {
     let [beneficiaryContactNum, setBeneficiaryContactNum] = useState(props.beneficiary.contactNum)
     let [beneficiaryDescription, setBeneficiaryDescription] = useState(props.beneficiary.description)
     let [beneficiaryWebsite, setBeneficiaryWebsite] = useState(props.beneficiary.website)
+    let [status, setStatus] = useState("active")
     let [photo, setPhoto] = useState(props.beneficiary.photo)
     
     let handleEdit = (e) => {
@@ -18,6 +19,7 @@ const BeneficiaryEditForm = (props) => {
         editBeneficiaryData.append('contactNum', beneficiaryContactNum)
         editBeneficiaryData.append('description', beneficiaryDescription)
         editBeneficiaryData.append('website', beneficiaryWebsite)
+        editBeneficiaryData.append('status', status)
         editBeneficiaryData.append('photo', photo)
         Axios.put(props.axiosPort + 'beneficiaries/' + props.beneficiary._id, editBeneficiaryData, {
             headers:{
@@ -62,6 +64,12 @@ const BeneficiaryEditForm = (props) => {
                 <div>
                     <input type="text" value={beneficiaryWebsite} onChange={e => setBeneficiaryWebsite(e.target.value)} />
                 </div>
+            </div>
+            <div>
+                <select value={status} onChange={e => setStatus(e.target.value)}>
+                    <option>active</option>
+                    <option>inactive</option>
+                </select>
             </div>
             
             <div className="benePhoto">
