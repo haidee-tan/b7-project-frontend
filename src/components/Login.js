@@ -35,7 +35,7 @@ const LogIn = (props) => {
     }
 
     return (
-        <div className="logInBox">
+        <div className="logInBox page">
             <div>
                 <div>Email Address</div>
                 <input type="text" value={email} onChange={e => setEmail(e.target.value)} />

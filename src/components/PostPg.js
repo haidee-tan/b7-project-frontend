@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import Axios from "axios";
 import { useState, useEffect } from 'react';
 
-const PostPg = ({axiosPort, setPost, posts}) => {
+const PostPg = ({axiosPort, setPost, posts, currUser}) => {
     let [modalDisp, setModalDisp] = useState(false);
     const [donationData, setDonationData] = useState({});
 
@@ -20,10 +20,9 @@ const PostPg = ({axiosPort, setPost, posts}) => {
     }, [axiosPort, setPost, posts])
 
     return (
-        <div>
-            <div>
-                <PostAddForm />
-            </div>
+        <div className="post-page page">
+            <h2>Posts</h2>
+            {currUser.role === "partner" ? <PostAddForm /> : null}
             <div className="posts">
                 {posts.map(post =>
                     <PostList
@@ -51,6 +50,7 @@ const mapStateToProps = (state) => {
     return {
         axiosPort: state.navSlice.axiosPort,
         posts: state.postsSlice.posts,
+        currUser: state.loginSlice.currUser
     }
 }
 

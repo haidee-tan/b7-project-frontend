@@ -35,7 +35,7 @@ const BeneficiaryEditForm = (props) => {
     return (
     <>
     <div>
-        <div className="beneListBox">
+        <div className="beneListBox editform">
             <div className="beneName">
                 <h2>
                     <input type="text" value={beneficiaryName} onChange={e => setBeneficiaryName(e.target.value)} />
@@ -70,10 +70,9 @@ const BeneficiaryEditForm = (props) => {
                     <option>active</option>
                     <option>inactive</option>
                 </select>
-            </div>
-            
+            </div> 
             <div className="benePhoto">
-                <div >
+                <div>
                 <input
                     className="addBenePhoto inputBene"
                     type="file"

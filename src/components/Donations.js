@@ -17,7 +17,7 @@ const Donations = (props) => {
     }, [axiosPort, setDonations, currUser])
 
     return (
-        <div>
+        <div className="page">
             <h2>Donations :)</h2>
             <div>
                 <div className="donation-row">

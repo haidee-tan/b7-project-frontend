@@ -22,7 +22,10 @@ const PostAddForm = (props) => {
         formData.append('photo', photo)
         formData.append('quantity', quantity)
         formData.append('status', "active")
-        Axios.post(props.axiosPort + "posts/", formData, {headers:{'content-type': 'multipart/form-data'}})
+        Axios.post(props.axiosPort + "posts/", formData, {headers:{
+            'content-type': 'multipart/form-data',
+            authorization: props.currUser.access
+        }})
         .then(res => {
             props.addPost(res.data)
         })
@@ -84,7 +87,8 @@ const PostAddForm = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        axiosPort: state.navSlice.axiosPort
+        axiosPort: state.navSlice.axiosPort,
+        currUser: state.loginSlice.currUser
     }
 }
 

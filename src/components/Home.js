@@ -7,7 +7,7 @@ const Home = (props) => {
     let genEmail = "feedback@kaserolla.com";
 
     return(
-        <div>
+        <div className="page">
             <div>
                 <h2>Welcome to Kaserolla!</h2>
             </div>
