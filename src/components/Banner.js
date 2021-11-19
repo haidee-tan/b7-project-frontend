@@ -3,7 +3,7 @@ import logo from "../assets/imgs/kaserolla-logo.png";
 const Banner = (props) => {
     return (
         <>
-        <div>
+        <div className="bannerContainer">
             <div className="bannerBox">
                 <img src={logo} alt="logo" />
             </div>

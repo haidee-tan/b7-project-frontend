@@ -3,16 +3,42 @@ import {connect} from "react-redux";
 
 const Nav = ({currUser, logoutUser}) => {
     return(
-        <div>
-            <Link to="/">Home</Link>
-            <Link to="/beneficiaries">Beneficiaries</Link>
+        <div className="navBox">
+            <div className="homeNav">
+                <Link to="/">
+                    <button className="navBtn">
+                    Home
+                    </button>
+                </Link>
+            </div>
+
+            <div className="beneNav">
+                <Link to="/beneficiaries">
+                    <button className="navBtn">
+                        Beneficiaries
+                    </button>
+                </Link>
+            </div>
             {
                 currUser.role === null || currUser.role === "" ?
                 null
                 :
                 <>
-                    <Link to="/posts">Posts</Link>
-                    <Link to="/donations">Donations</Link>
+                <div className="postNav">
+                    <Link to="/posts">
+                        <button className="navBtn">
+                            Posts
+                        </button>
+                    </Link>
+                </div>
+
+                <div className="donationNav">
+                    <Link to="/donations">
+                        <button className="navBtn">
+                            Donations
+                        </button>
+                    </Link>
+                </div>
                 </>
             }
             {
@@ -23,13 +49,38 @@ const Nav = ({currUser, logoutUser}) => {
             {
                 currUser.access === "" ?
                 <>
-                    <Link to="/signup">Sign Up</Link>
-                    <Link to="/login">Login</Link>
+                <div className="signupNav">
+                    <Link to="/signup">
+                        <button className="navBtn">
+                            Sign Up
+                        </button>
+                    </Link>
+                </div>
+                <div className="loginNav">
+                    <Link to="/login">
+                        <button className="navBtn">
+                            Login
+                        </button>
+                    </Link>
+                </div>
                 </>
                 :
                 <>
-                    <span>Hello, {currUser.firstName}!</span>
-                    <button onClick={logoutUser}>Logout</button>
+                <div className="logoutBox">
+                    <span className="spanName">
+                        <h2>Hello,</h2> 
+                        <h2 className="name">
+                        {currUser.firstName}! 
+                        </h2>
+                    </span>
+                    <div className="logoutNav">
+                        <button 
+                        className="navBtn logout"
+                        onClick={logoutUser}>
+                            Logout
+                        </button>
+                    </div>
+                </div>
                 </>
             }
         </div>
