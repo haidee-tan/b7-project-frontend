@@ -25,7 +25,7 @@ const DonationForm = (props) => {
                 paymentMethod,
                 paymentNotes,
             };
-            Axios.post(`${props.axiosPort}donations/create/post/${_id}/${beneficiary}`, donation, /*{headers: {authorization: currentUser.access}}*/)
+            Axios.post(`${props.axiosPort}donations/create/post/${_id}/${beneficiary}`, donation, {headers: {authorization: props.currUser.access}})
             .then(res => {
                 setSystemMsg("Successful! Thank you for your donation.");
                 setModalDispData("success");
@@ -123,6 +123,7 @@ const DonationForm = (props) => {
 
 const mapStateToProps = (state) => {
     return {
+        currUser: state.loginSlice.currUser,
         axiosPort: state.navSlice.axiosPort,
         beneficiaries: state.beneficiariesSlice.beneficiaries
     }

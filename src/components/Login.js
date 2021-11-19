@@ -16,24 +16,25 @@ const LogIn = (props) => {
         let user = {email, password}
         Axios.post(props.axiosPort + "users/login", user)
         .then(res => {
-            if(res.data === "invalid") {
-                setErrorMsg("Invalid credentials.")
-            } else {
-                let loginUser = {
-                    role: res.data.role,
-                    access: res.data.access,
-                    email: res.data.email,
-                    userStatus: res.data.userStatus
-                }
-                props.userInfo(loginUser)
+            if (res.data === "invalid credentials") {
+                return setErrorMsg("Invalid credentials.")
             }
-
+            if (res.data.status !== "active") {
+                return setErrorMsg("Please contact Admin to set account status to active.")
+            }
+            let loginUser = {
+                role: res.data.role,
+                access: res.data.access,
+                email: res.data.email,
+                status: res.data.status,
+                firstName: res.data.firstName
+            }
+            props.userInfo(loginUser);
+            return window.location.replace("/");
         })
     }
 
     return (
-        <>
-
         <div className="logInBox">
             <div>
                 <div>Email Address</div>
@@ -45,10 +46,11 @@ const LogIn = (props) => {
                 <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
                 <div>{passwordErrMsg}</div>
             </div>
-            <button onClick={handleLogIn}>Log In</button>
+            <div>
+                <div>{errorMsg}</div>
+                <button onClick={handleLogIn}>Log In</button>
+            </div>
         </div>
-
-        </>
     )
 }
 

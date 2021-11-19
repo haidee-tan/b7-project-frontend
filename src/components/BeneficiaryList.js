@@ -1,21 +1,18 @@
 // 
 import { connect } from "react-redux";
-import { useState} from "react"
 import Axios from "axios";
 
 const BeneficiaryList = (props) => {
 
     let handleDel = () => {
-        Axios.delete(props.axiosPort + 'beneficiaries/' + props.beneficiary._id)
-        .then(res => {
-            props.delBeneficiary(res.data)
-        })
+        Axios.delete(props.axiosPort + 'beneficiaries/delete/' + props.beneficiary._id, {headers: {authorization: props.currUser.access}})
+        .then(res => props.delBeneficiary(res.data))
     }
 
     let beneficiary = props.beneficiary
+
     
     return (
-        <>
         <div className="beneListContainer">
             <div className="beneListBox">
                 <div className="beneName">
@@ -44,27 +41,30 @@ const BeneficiaryList = (props) => {
                     </div>
                 </div>
             </div>
-            <div>
-                <button 
-                    className="beneDelBtn"
-                    onClick={handleDel}
-                >Delete
-                </button>
-
-                <button 
-                className="beneEditBtn"
-                onClick={(e) => props.handleEditBtn(e, beneficiary)}>
-                    Edit
-                </button>
-            </div>
+            {
+                props.currUser.role === "admin" ?
+                <div>
+                    <button 
+                        className="beneEditBtn"
+                        onClick={(e) => props.handleEditBtn(e, beneficiary)}
+                    >Edit
+                    </button>
+                    <button 
+                        className="beneDelBtn"
+                        onClick={handleDel}
+                    >Delete
+                    </button>
+                </div>
+                : null
+            }
         </div>
-        </>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
         axiosPort: state.navSlice.axiosPort,
+        currUser: state.loginSlice.currUser
     }
 }
 

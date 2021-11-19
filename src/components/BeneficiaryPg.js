@@ -7,7 +7,7 @@ import BeneficiaryList from "./BeneficiaryList";
 import BeneAddForm from './BeneAddForm';
 import BeneficiaryEditForm from "./BeneficiaryEditForm";
 
-const BeneficiaryPg = ({axiosPort, setBeneficiary, beneficiaries}) => {
+const BeneficiaryPg = ({axiosPort, setBeneficiary, beneficiaries, currUser}) => {
     useEffect (() => {
         Axios.get(axiosPort + 'beneficiaries/')
             .then(res => {
@@ -24,27 +24,26 @@ const BeneficiaryPg = ({axiosPort, setBeneficiary, beneficiaries}) => {
 
     return (
         <div>
+            {currUser.role === "admin" ? <BeneAddForm /> : null}
             <div>
-                <BeneAddForm />
-            </div>
-            <div>
-
                 {beneficiaries.map (beneficiary =>
-            <Fragment>
-                {editList === beneficiary._id ? 
-                (
-                <BeneficiaryEditForm
-                beneficiary={beneficiary}/>)
-                :
-                (
-                <BeneficiaryList 
-                beneficiary={beneficiary} 
-                handleEditBtn={handleEditBtn}
-                key={beneficiary._id}/>
+                    <Fragment>
+                        {
+                            editList === beneficiary._id ? 
+                            <BeneficiaryEditForm
+                                beneficiary={beneficiary}
+                                setEditList={setEditList}
+                                key={beneficiary._id}
+                            />
+                            :
+                            <BeneficiaryList 
+                                beneficiary={beneficiary} 
+                                handleEditBtn={handleEditBtn}
+                                key={beneficiary._id}
+                            />
+                        }
+                    </Fragment>
                 )}
-            </Fragment>
-                )}
-
             </div>
         </div>
     )
@@ -53,6 +52,7 @@ const BeneficiaryPg = ({axiosPort, setBeneficiary, beneficiaries}) => {
 const mapStateToProps = (state) => {
     return {
         axiosPort: state.navSlice.axiosPort,
+        currUser: state.loginSlice.currUser,
         beneficiaries: state.beneficiariesSlice.beneficiaries,
     }
 }

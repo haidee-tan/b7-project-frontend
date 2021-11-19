@@ -22,6 +22,7 @@ const beneficiariesSlice = (state = initialState, action) => {
             let index = beneficiaryCopy.findIndex( (beneficiary) => beneficiary._id === action.payload._id);
             if (index !== -1)
             beneficiaryCopy[index] = action.payload
+            console.log(beneficiaryCopy)
             return {
                 ...state,
                 beneficiaries: beneficiaryCopy

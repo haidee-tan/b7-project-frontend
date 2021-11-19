@@ -1,5 +1,6 @@
 import Axios from "axios";
 import { useState } from 'react';
+import {connect} from "react-redux";
 
 const BeneficiaryEditForm = (props) => {
     let [beneficiaryName, setBeneficiaryName] = useState(props.beneficiary.name)
@@ -8,7 +9,6 @@ const BeneficiaryEditForm = (props) => {
     let [beneficiaryDescription, setBeneficiaryDescription] = useState(props.beneficiary.description)
     let [beneficiaryWebsite, setBeneficiaryWebsite] = useState(props.beneficiary.website)
     let [photo, setPhoto] = useState(props.beneficiary.photo)
-
     
     let handleEdit = (e) => {
         e.preventDefault();
@@ -19,10 +19,15 @@ const BeneficiaryEditForm = (props) => {
         editBeneficiaryData.append('description', beneficiaryDescription)
         editBeneficiaryData.append('website', beneficiaryWebsite)
         editBeneficiaryData.append('photo', photo)
-        
-        Axios.put(props.axiosPort + 'beneficiaries/' + props.beneficiary._id, editBeneficiaryData, {headers:{'content-type': 'multipart/form-data'}} )
+        Axios.put(props.axiosPort + 'beneficiaries/' + props.beneficiary._id, editBeneficiaryData, {
+            headers:{
+                'content-type': 'multipart/form-data',
+                authorization: props.currUser.access
+            }
+        })
         .then (res => {
-            props.editBeneficiary(res.data)
+            props.editBeneficiary(res.data);
+            props.setEditList(null);
         })
     }
     return (
@@ -82,4 +87,20 @@ const BeneficiaryEditForm = (props) => {
     )
 }
 
-export default BeneficiaryEditForm;
+const mapStateToProps = (state) => {
+    return {
+        axiosPort: state.navSlice.axiosPort,
+        currUser: state.loginSlice.currUser,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        editBeneficiary: (beneficiary) => dispatch({
+            type: 'EDIT_BENEFICIARY',
+            payload: beneficiary
+        })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BeneficiaryEditForm);

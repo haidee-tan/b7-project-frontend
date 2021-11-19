@@ -9,7 +9,7 @@ import BeneficiaryPg from "./BeneficiaryPg";
 import PostPg from './PostPg';
 import SignUp from './SignUp';
 import LogIn from "./Login";
-import Donation from "./Donation";
+import Donations from "./Donations";
 
 import "../assets/css/home.css"
 import "../assets/css/posts.css"
@@ -27,19 +27,12 @@ const Kaserolla = ({axiosPort, setBeneficiary, beneficiaries}) => {
         <div>
             <Nav />
             <Route path="/" component={Home} exact/>
-
             <Route path="/beneficiaries" component={BeneficiaryPg} />
-
             <Route path="/posts" component={PostPg} />
-
-            <Route path="/donations" component={Donation} />
-
+            <Route path="/donations" component={Donations} />
             <Route path="/usermgt" component="" />
-
             <Route path="/signup" component={SignUp} />
-            
             <Route path="/login" component={LogIn} />
-            
             <Footer />
         </div>
     )

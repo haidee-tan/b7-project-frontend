@@ -5,16 +5,16 @@ import Donation from "./Donation";
 
 const Donations = (props) => {
 
-    let {axiosPort, donations, setDonations} = props
-
+    let {axiosPort, donations, setDonations, currUser} = props
+    
     useEffect(() => {
-        // insert access conditions here
-        let routeAccess = "donations/all"
-        Axios.get(axiosPort + routeAccess, /*{headers: {authorization: currentUser.access}}*/)
+        let routeAccess;
+        currUser.role === "admin" ? routeAccess = "donations/all" : routeAccess = "donations/"
+        Axios.get(axiosPort + routeAccess, {headers: {authorization: currUser.access}})
         .then(res => {
             setDonations(res.data)
         })
-    }, [axiosPort, setDonations])
+    }, [axiosPort, setDonations, currUser])
 
     return (
         <div>
@@ -42,7 +42,8 @@ const Donations = (props) => {
 const mapStateToProps = (state) => {
     return {
         axiosPort: state.navSlice.axiosPort,
-        donations: state.donationsSlice.donations
+        donations: state.donationsSlice.donations,
+        currUser: state.loginSlice.currUser
     }
 }
 

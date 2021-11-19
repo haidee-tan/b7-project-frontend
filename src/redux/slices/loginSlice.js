@@ -1,24 +1,27 @@
 let savedEmail = localStorage.getItem("email");
 let savedRole = localStorage.getItem("role");
-let savedUserStatus = localStorage.getItem("userStatus");
-let savedAccess = localStorage.getItem("access")
+let savedStatus = localStorage.getItem("status");
+let savedAccess = localStorage.getItem("access");
+let savedFirstName = localStorage.getItem("firstName");
 
 
 const initialState = {
     currUser: 
-        savedEmail === null ?
+        savedAccess === null ?
         {
-            emial: "",
+            email: "",
             role: "",
             access: "",
-            userStatus: "",
+            status: "",
+            firstName: ""
         }
         :
         {
-            emial: savedEmail,
+            email: savedEmail,
             role: savedRole,
             access: savedAccess,
-            userStatus: savedUserStatus,
+            status: savedStatus,
+            firstName: savedFirstName
         }
 }
 
@@ -28,10 +31,25 @@ const loginSlice = (state = initialState, action) => {
             localStorage.setItem("email", action.payload.email)
             localStorage.setItem("access", action.payload.access)
             localStorage.setItem("role", action.payload.role)
-            localStorage.setItem("userStatus", action.payload.userStatus)
+            localStorage.setItem("status", action.payload.status)
+            localStorage.setItem("firstName", action.payload.firstName)
             return {
                 ...state,
                 currUser: action.payload
+            }
+        }
+        case "LOGOUT_USER": {
+            localStorage.clear();
+            let currUserCopy = {
+                email: "",
+                role: "",
+                access: "",
+                status: "",
+                firstName: ""
+            }
+            return {
+                ...state,
+                currUser: currUserCopy
             }
         }
         default: return state;

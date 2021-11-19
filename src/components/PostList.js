@@ -21,7 +21,6 @@ const PostList = (props) => {
         setEditPostPrice(price);
         setEditPostQuantity(quantity);
         setEditPostPhoto(photo);
-        console.log("hello")
     }, [name, description, availability, price, quantity, photo])
 
     let handleSavePost = (e) => {
@@ -39,7 +38,7 @@ const PostList = (props) => {
             props.editPost(res.data);
             setEnableEdit(false);
         })
-
+    }
     let handleDelPost = () => {
         Axios.delete(props.axiosPort + "posts/" + props.post._id)
         .then(res => {
@@ -60,8 +59,7 @@ const PostList = (props) => {
     }
 
     return (
-        <>
-        <div>
+        <div className="post">
             <div>Name: 
                 <input 
                     type="text" 
@@ -138,17 +136,18 @@ const PostList = (props) => {
             </div>
             
             <div>
-                {!props.modalDisp ? <button onClick={handleDonateBtn}>Donate</button> : null}
+                {!props.modalDisp && (props.currUser.role === "sponsor" || props.currUser.role === "partner") ?
+                <button onClick={handleDonateBtn}>Donate</button>
+                : null}
             </div>
         </div>
-        </>
-        )
-    }
+    )
 }
 
 const mapStateToProps = (state) => {
     return {
         axiosPort: state.navSlice.axiosPort,
+        currUser: state.loginSlice.currUser
     }
 }
 
