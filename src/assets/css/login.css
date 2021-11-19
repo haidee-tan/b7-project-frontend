@@ -3,9 +3,9 @@
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 25px;
-    border: 3px solid #ffd298;
+    border: 5px ridge #a0bde0;
     width: fit-content;
-    background-color: #ffd278;
+    background-color: #a9bfd4;
 }
 .eMail, .password, .loginBtn {
   margin: 5px;
@@ -16,16 +16,3 @@
 .loginErrMsg {
   color: red;
 }
-
-  
-  @media only screen and (min-width: 556px) {
-      
-      
-    }
-    
-    
-    
-    @media only screen and (min-width: 991px) {
-      
-      
-  }

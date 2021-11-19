@@ -37,44 +37,118 @@ const BeneficiaryEditForm = (props) => {
     }
     return (
     <>
-    <div>
+    <div className="beneListContainer">
+        <div className="beneListBox">
+            <div className="beneName">
+                <strong>
+                    Name :
+                </strong>
+                <h2>
+                    <input type="text" value={beneficiaryName} onChange={e => setBeneficiaryName(e.target.value)} />
+                </h2>
+            </div>
+
+            <div className="benePhoto">
+                <div className="image">
+                <strong>
+                    Upload Image :
+                </strong>
+                    <input
+                    className="addBenePhoto inputBene"
+                    type="file"
+                    name="photo"
+                    accept="image/*"
+                    onChange={e => setPhoto(e.target.files[0])} />
+                </div>
+
+                <div className="details">
+                <strong>
+                    Details :
+                </strong>
+                    <textarea type="text" value={beneficiaryDescription} onChange={e => setBeneficiaryDescription(e.target.value)} />
+                </div>
+            </div>
+
+            <div className="beneContact">
+
+                <strong>
+                    Address :           
+                </strong>
+                <div>
+                    <input type="text" value={beneficiaryAddress} onChange={e => setBeneficiaryAddress(e.target.value)} />
+                </div>
+
+                <strong>
+                    Contact # :
+                </strong>
+                <div>
+                    <input type="number" value={beneficiaryContactNum} onChange={e => setBeneficiaryContactNum(e.target.value)} />
+                </div>
+
+                <strong>
+                    Website :
+                </strong>
+                <div className="beneWebsite">
+                    <input type="text" value={beneficiaryWebsite} onChange={e => setBeneficiaryWebsite(e.target.value)} />
+                </div>
+
+                <button 
+                className="beneEditBtn"
+                onClick={handleEdit}>
+                    Update
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    {/* <div>
         <div className="beneListBox editform">
             <div className="beneName">
+                Name :
                 <h2>
                     <input type="text" value={beneficiaryName} onChange={e => setBeneficiaryName(e.target.value)} />
                 </h2>
             </div>
 
             <div className="beneAddress">
+                Address :
                 <div>
                     <input type="text" value={beneficiaryAddress} onChange={e => setBeneficiaryAddress(e.target.value)} />
                 </div>
             </div>
 
             <div className="beneContact">
+                Contact # :
                 <div>
                     <input type="number" value={beneficiaryContactNum} onChange={e => setBeneficiaryContactNum(e.target.value)} />
                 </div>
             </div>
 
             <div className="beneDesc">
+                Details :
                 <div>
                     <textarea type="text" value={beneficiaryDescription} onChange={e => setBeneficiaryDescription(e.target.value)} />
                 </div>
             </div>
 
             <div className="beneWebsite">
+                Website :
                 <div>
                     <input type="text" value={beneficiaryWebsite} onChange={e => setBeneficiaryWebsite(e.target.value)} />
                 </div>
             </div>
             <div>
+                Status :
                 <select value={status} onChange={e => setStatus(e.target.value)}>
                     <option>active</option>
                     <option>inactive</option>
                 </select>
             </div> 
             <div className="benePhoto">
+                Image :
                 <div>
                 <input
                     className="addBenePhoto inputBene"
@@ -90,9 +164,8 @@ const BeneficiaryEditForm = (props) => {
             Update
         </button>
         </div>
+    </div> */}
 
-
-    </div>
     </>
     )
 }
