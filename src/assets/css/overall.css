@@ -10,3 +10,39 @@ body {
 .page {
   padding: 15px;
 }
+.modal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+  min-width: 350px;
+  max-width: 500px;
+  border: 1px solid #bbbbbb;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  filter: drop-shadow(2px 2px 10px rgb(112, 112, 112));
+}
+.modal-body {
+  padding: 20px;
+}
+.modal .btn-box {
+  justify-content: flex-end;
+}
+.modal .btn-box button {
+  padding: 4px 30px 6px 30px;
+  background-color: #ff914d;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+.modal .btn-box button:hover {
+  background-color: #da4105;
+}

@@ -24,7 +24,7 @@ const PostPg = ({axiosPort, setPost, posts, currUser}) => {
     return (
         <div className="post-page page">
             {
-                !addFormDisp ?
+                !addFormDisp && currUser.role === "partner" ?
                 <button onClick={() => setAddFormDisp(!addFormDisp)} className="show-btn">
                     <img src={Plus} alt="plus"/>
                 </button>
@@ -36,10 +36,10 @@ const PostPg = ({axiosPort, setPost, posts, currUser}) => {
                 {posts.map(post =>
                     <PostList
                         post = {post}
-                        key = {post._id}
                         modalDisp = {modalDisp}
                         setModalDisp = {setModalDisp}
                         setDonationData = {setDonationData}
+                        key = {post._id + post.name}
                     />
                 )}        
             </div>
