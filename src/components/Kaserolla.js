@@ -2,6 +2,8 @@ import {Route} from "react-router-dom";
 import { connect } from "react-redux";
 import Axios from "axios";
 import { useEffect } from 'react';
+
+// COMPONENTS
 import Home from "./Home";
 import Nav from "./Nav";
 import Footer from "./Footer";
@@ -12,6 +14,7 @@ import LogIn from "./Login";
 import Donations from "./Donations";
 import Banner from "./Banner";
 
+// CSS
 import "../assets/css/overall.css"
 import "../assets/css/home.css"
 import "../assets/css/posts.css"
@@ -20,6 +23,7 @@ import "../assets/css/donations.css"
 import "../assets/css/banner.css"
 import "../assets/css/beneficiary.css"
 import "../assets/css/login.css"
+import "../assets/css/nav.css"
 
 const Kaserolla = ({axiosPort, setBeneficiary, beneficiaries}) => {
     useEffect (() => {

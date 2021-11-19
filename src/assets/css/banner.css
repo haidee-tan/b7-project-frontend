@@ -1,10 +1,20 @@
-.bannerBox {
-    /* border: black 1px solid; */
-    width: fit-content;
+.bannerContainer {
     margin: 0 auto;
+    padding: 5px;
+    border: 5px solid #7ed957;
+    border-radius: 50%;
+    width: fit-content;
+    overflow: hidden;
+    background-color: #7ed957;
+}
+.bannerBox {
+    border: 5px solid #7ed957;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: white;
 }
 .bannerBox img {
     width: 250px;
     height: 250px;
-
 }
