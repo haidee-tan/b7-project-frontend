@@ -35,22 +35,31 @@ const LogIn = (props) => {
     }
 
     return (
-        <div className="logInBox page">
-            <div>
+    <div className="loginBox page">
+        <div className="loginContainer">
+            <div className="eMail">
                 <div>Email Address</div>
+
                 <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
                 <div>{emailErrMsg}</div>
             </div>
-            <div>
+            <div className="password">
                 <div>Password</div>
+
                 <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
                 <div>{passwordErrMsg}</div>
             </div>
-            <div>
-                <div>{errorMsg}</div>
-                <button onClick={handleLogIn}>Log In</button>
+
+            <div className="loginBtn">
+                <div className="loginErrMsg">{errorMsg}</div>
+                <button 
+                className="logIn"
+                onClick={handleLogIn}>
+                    Log In
+                </button>
             </div>
         </div>
+    </div>
     )
 }
 

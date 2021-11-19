@@ -7,6 +7,8 @@ import DonationForm from "./DonationForm";
 import { connect } from "react-redux";
 import Axios from "axios";
 import { useState, useEffect } from 'react';
+
+// ICON
 import Plus from "../assets/imgs/buttons/plus.png";
 
 const PostPg = ({axiosPort, setPost, posts, currUser}) => {

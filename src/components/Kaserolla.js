@@ -33,9 +33,14 @@ const Kaserolla = ({axiosPort, setBeneficiary, beneficiaries}) => {
         })
     }, [axiosPort, setBeneficiary])
     return ( 
-        <div className="main-body">
+     <div className="main-body">
+        <div className="banner">
             <Banner />
+        </div>
+        <div className="nav">
             <Nav />
+        </div>
+        <div className="mainContent">
             <Route path="/" component={Home} exact/>
             <Route path="/beneficiaries" component={BeneficiaryPg} />
             <Route path="/posts" component={PostPg} />
@@ -44,6 +49,7 @@ const Kaserolla = ({axiosPort, setBeneficiary, beneficiaries}) => {
             <Route path="/login" component={LogIn} />
             <Footer />
         </div>
+    </div>
     )
 }
 

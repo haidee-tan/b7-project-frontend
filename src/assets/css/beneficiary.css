@@ -1,52 +1,70 @@
+/* ADD FORM */
 .beneBox {
-    padding: 5px;
-  }
-  .beneForm {
-    flex-wrap: wrap;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 100%;
-    padding: 10px;
-  }
-  .beneAddBtn {
-    padding: 2px;
-    background-color: yellow;
-    border-radius: 5px;
-  }
+  padding: 5px;
+}
+.beneForm {
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 10px;
+}
+.beneAddBtn {
+  padding: 2px;
+  background-color: #7ed957;
+  border-radius: 5px;
+}
 
-  /* BENEFICIARY LIST */
-  .beneListContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-  }
-  .beneListBox {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    border: 2px solid black;
-    margin: 10px;
-    padding: 10px;
-    background-color: lightseagreen;
-  }
-  .beneImg {
-    width: 200px;
-    height: 200px;
-  }
+
+/* BENEFICIARY LIST */
+.beneficiary2 {
+  width: 100%;
+}
+.beneListBox {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+  padding: 10px;
+  background-color: #7ed5;
+  border: 3px solid #636363;
+  border-radius: 10px;
+}
+.beneName {
+  margin: 5px;
+}
+.beneImg {
+  width: 200px;
+  height: 200px;
+}
+.benePhoto {
+  display: flex;
+}
+.image {
+  margin-right: 15px;
+}
+.details {
+  font-size: large ;
+}
+.beneWebsite {
+  color: blue;
+}
+.beneEditBtn {
+  background-color: #ffd278;
+  padding: 2px;
+  border-radius: 5px;
+}
 
 
 
 @media only screen and (min-width: 556px) {
-    
-    
+  
+  
 }
 
 
 
 @media only screen and (min-width: 991px) {
-  
-  
+
+
 }

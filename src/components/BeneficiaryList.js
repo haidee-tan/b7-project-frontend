@@ -13,43 +13,52 @@ const BeneficiaryList = (props) => {
     return (
         <div className="beneListContainer">
             <div className="beneListBox">
+
                 <div className="beneName">
                     <h2>{props.beneficiary.name}</h2>
                 </div>
 
-                <div className="beneAddress">
-                    <div>{props.beneficiary.address}</div>
-                </div>
-
-                <div className="beneContact">
-                    <div>{props.beneficiary.contactNum}</div>
-                </div>
-
-                <div className="beneDesc">
-                    <div>{props.beneficiary.description}</div>
-                </div>
-
-                <div className="beneWebsite">
-                    <div>{props.beneficiary.website}</div>
-                </div>
-                
                 <div className="benePhoto">
-                    <div >
+                    <div className="image">
                         <img className="beneImg" src={props.axiosPort + props.beneficiary.photo} alt={props.beneficiary.name}/>
                     </div>
+
+                    <div className="details">
+                        {props.beneficiary.description}
+                    </div>
+                </div>
+
+
+                <div className="beneContact">
+
+                    <strong>
+                        Address :           
+                    </strong>
+                    <div>{props.beneficiary.address}</div>
+
+                    <strong>
+                        Contact # :
+                    </strong>
+                    <div>{props.beneficiary.contactNum}</div>
+
+                    <div className="beneWebsite">{props.beneficiary.website}</div>
+                    
+                    <div>
+                        {
+                        props.currUser.role === "admin" ?
+                        <div className="editBtnBox">
+                            <button 
+                                className="beneEditBtn"
+                                onClick={(e) => props.handleEditBtn(e, beneficiary)}
+                                >Edit
+                            </button>
+                        </div>
+                        : null
+                        }
+                    </div>
+
                 </div>
             </div>
-            {
-                props.currUser.role === "admin" ?
-                <div>
-                    <button 
-                        className="beneEditBtn"
-                        onClick={(e) => props.handleEditBtn(e, beneficiary)}
-                    >Edit
-                    </button>
-                </div>
-                : null
-            }
         </div>
     )
 }

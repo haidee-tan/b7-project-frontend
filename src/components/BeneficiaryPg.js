@@ -24,8 +24,10 @@ const BeneficiaryPg = ({axiosPort, setBeneficiary, beneficiaries, currUser}) => 
 
     return (
         <div className="page">
-            {currUser.role === "admin" ? <BeneAddForm /> : null}
-            <div>
+            <div className="beneficiary1">
+                {currUser.role === "admin" ? <BeneAddForm /> : null}
+            </div>
+            <div className="beneficiary2">
                 {beneficiaries.map (beneficiary =>
                     <Fragment key={beneficiary._id}>
                         {

@@ -46,3 +46,14 @@ body {
 .modal .btn-box button:hover {
   background-color: #da4105;
 }
+.banner {
+  margin-top: 10px;
+  padding: 10px;
+}
+.nav {
+  background-color: #ececec;
+  padding: 5px;
+}
+.mainContent {
+  margin-bottom: 10px;
+}
