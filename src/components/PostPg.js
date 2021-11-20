@@ -25,14 +25,16 @@ const PostPg = ({axiosPort, setPost, posts, currUser}) => {
 
     return (
         <div className="post-page page">
-            {
-                !addFormDisp && currUser.role === "partner" ?
-                <button onClick={() => setAddFormDisp(!addFormDisp)} className="show-btn">
-                    <img src={Plus} alt="plus"/>
-                </button>
-                : null
-            }
-            <h2>Posts</h2>
+            <div className="sticky">
+                {
+                    !addFormDisp && currUser.role === "partner" ?
+                    <button onClick={() => setAddFormDisp(!addFormDisp)} className="show-btn">
+                        <img src={Plus} alt="plus"/>
+                    </button>
+                    : null
+                }
+                <h2>Posts</h2>
+            </div>
             {currUser.role === "partner" && addFormDisp ? <PostAddForm setAddFormDisp={setAddFormDisp}/> : null}
             <div className="posts">
                 {posts.map(post =>

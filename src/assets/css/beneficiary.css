@@ -2,21 +2,46 @@
 .beneBox {
   padding: 5px;
 }
-.beneForm {
-  flex-wrap: wrap;
+.beneficiary1 {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+}
+.beneForm {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
-  width: 100%;
+  min-width: 300px;
+  max-width: 500px;
   padding: 10px;
+  padding: 30px;
+  background-color: #deffd0;
+  border-radius: 20px;
 }
-.beneAddBtn {
-  padding: 2px;
-  background-color: #7ed957;
-  border-radius: 5px;
+.beneForm h3 {
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #40b10f;
 }
-
-
+.beneForm > div {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 3px;
+}
+.beneForm > div > div {
+  width: 25%;
+  font-weight: 700;
+  font-size: 14px;
+}
+.beneForm input {
+  padding: 5px;
+  width: 75%;
+}
+.btn-box {
+  justify-content: center;
+  width: 100%;
+}
 /* BENEFICIARY LIST */
 .beneficiary2 {
   width: 100%;
@@ -24,47 +49,92 @@
 .beneListBox {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   margin: 10px;
-  padding: 10px;
-  background-color: #7ed7;
-  border: 5px groove #7ed2;
+  padding: 20px;
+  background-color: #deffd0;
+  /* border: 5px groove #7ed2; */
   border-radius: 10px;
+}
+.beneListBox h2 {
+  font-size: 20px;
+  color: #40b10f;
+  margin-bottom: 10px;
 }
 .beneName {
   margin: 5px;
-}
-.beneImg {
-  width: 200px;
-  height: 200px;
+  width: 100%;
 }
 .benePhoto {
-  display: flex;
+  width: 30%;
+  height: 200px;
+  background-color: white;
+  padding: 20px;
+  overflow: hidden;
+  border-radius: 20px;
 }
-.image {
-  margin-right: 15px;
-}
-.details {
-  font-size: large ;
+.beneImg {
+  width: 100%;
+  object-fit: cover;
 }
 .beneWebsite {
   color: blue;
 }
-.beneEditBtn {
-  background-color: #ffd278;
-  padding: 2px;
-  border-radius: 5px;
+.beneContact {
+  width: 66%;
+  display: flex;
+  flex-wrap: wrap;
 }
-
-
-
+.beneContact > .contact-details {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: stretch;
+}
+.beneContact > .contact-details > div {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 3px 0;
+}
+.beneContact strong {
+  width: 30%;
+}
+.beneContact > .contact-details > div > div:last-child {
+  width: 70%;
+}
+.beneContact .edit-field {
+  width: 70%;
+  outline: 1px solid #979797;
+  border: none;
+  padding: 5px;
+}
+.editBtnBox {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.beneContact textarea {
+  resize: none;
+  height: 50px;
+}
+.beneContact select {
+  text-transform: capitalize;
+}
+.beneName input {
+  font-size: 20px;
+  padding: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+  font-weight: 700;
+  outline: 1px solid #979797;
+  border: none;
+  color: #40b10f;
+}
 @media only screen and (min-width: 556px) {
-  
-  
 }
-
-
 
 @media only screen and (min-width: 991px) {
-
-
 }

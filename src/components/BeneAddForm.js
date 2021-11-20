@@ -32,60 +32,73 @@ const BeneAddForm = (props) => {
     }
     
     return (
-        <div>
-            <div className="beneContainer addform">
-                <div className="beneBox">
-                    <form className="beneForm">
-                        Name:
+        <div className="beneContainer addform">
+            <div className="beneBox">
+                <form className="beneForm">
+                    <h3>Add a Beneficiary</h3>
+                    <div>
+                        <div>Name:</div>
                         <input 
                             className="addBeneName inputBene"
                             type="text"
                             value={name}
                             onChange={e => setName(e.target.value)}
                         />
-                        Address:
+                    </div>
+                    <div>
+                        <div>Address:</div>
                         <input 
                             className="addBeneAddress inputBene"
                             type="text"
                             value={address}
                             onChange={e => setAddress(e.target.value)}
                         />
-                        Contact Info:
+                    </div>
+                    <div>
+                        <div>Contact Info:</div>
                         <input
                             className="addBeneContact inputBene"
                             type="text"
                             value={contactNum}
                             onChange={e => setContactNum(e.target.value)}
                         />
-                        Details:
+                    </div>
+                    <div>
+                        <div>Details:</div>
                         <input
                             className="addBeneDesc inputBene"
                             type="text"
                             value={description}
                             onChange={e => setDescription(e.target.value)}
                         />
-                        Website:
+                    </div>
+                    <div>
+                        <div>Website:</div>
                         <input 
                             className="addBeneWebsite inputBene"
                             type="text"
                             value={website}
                             onChange={e => setWebsite(e.target.value)}
                         />
-                        Images:
+                    </div>
+                    <div>
+                        <div>Image:</div>
                         <input
                             className="addBenePhoto inputBene"
                             type="file"
                             name="photo"
                             accept="image/*"
-                            onChange={e => setPhoto(e.target.files[0])} />
-
-                    <button
-                        className="beneAddBtn"
-                        onClick={handleAdd}
-                    >+Beneficiary
-                    </button>
-                    </form>
-                </div>
+                            onChange={e => setPhoto(e.target.files[0])}
+                        />
+                    </div>
+                    <div className="btn-box">
+                        <button
+                            className="custom-btn"
+                            onClick={handleAdd}
+                        >+Beneficiary
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     )

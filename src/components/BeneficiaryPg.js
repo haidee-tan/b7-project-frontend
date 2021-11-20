@@ -24,6 +24,7 @@ const BeneficiaryPg = ({axiosPort, setBeneficiary, beneficiaries, currUser}) => 
 
     return (
         <div className="page">
+            <h2>Kaserolla Beneficiaries</h2>
             <div className="beneficiary1">
                 {currUser.role === "admin" ? <BeneAddForm /> : null}
             </div>

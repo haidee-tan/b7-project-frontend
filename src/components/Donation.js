@@ -20,13 +20,13 @@ const Donation = (props) => {
             <div>{beneficiary.name}</div>
             <div>{quantity}</div>
             <div>{fee}</div>
+            <div>
             {
                 props.currUser.role === "admin" ?
-                <div>
-                    <button onClick={handleDelete}>Delete</button>
-                </div>
+                <button onClick={handleDelete}>Delete</button>
                 : null
             }
+            </div>
         </div>
     )
 }

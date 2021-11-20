@@ -47,6 +47,7 @@ const loginSlice = (state = initialState, action) => {
                 status: "",
                 firstName: ""
             }
+            window.location.replace("/");
             return {
                 ...state,
                 currUser: currUserCopy

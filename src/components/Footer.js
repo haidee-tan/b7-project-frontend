@@ -1,7 +1,7 @@
 import facebook from "../assets/imgs/links/facebook.png";
 import twitter from "../assets/imgs/links/twitter.png";
 import instagram from "../assets/imgs/links/instagram.png";
-import logo from "../assets/imgs/kaserolla-landscape.png";
+import logo from "../assets/imgs/kaserolla-landscape-removebg.png";
 
 const Footer  = (props) => {
     return(

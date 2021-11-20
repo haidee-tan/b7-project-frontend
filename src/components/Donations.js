@@ -18,18 +18,23 @@ const Donations = (props) => {
 
     return (
         <div className="page">
-            <h2>Donations :)</h2>
-            <div>
-                <div className="donation-row">
+            <div className="sticky">
+                <h2>Donations</h2>
+            </div>
+            <div className="donations-table">
+                <div className="donation-row header">
                     <div>Date</div>
                     <div>Image</div>
-                    <div>Post Name</div>
+                    <div>Item Name</div>
                     <div>Beneficiary</div>
-                    <div>Donation Qty</div>
-                    <div>Total Donation Amt</div>
+                    <div>Qty</div>
+                    <div>Amt</div>
                     <div></div>
                 </div>
                 {
+                    donations.length === 0 ?
+                    <div className="none-msg">None. Why not start rolling the Kaserolla? :)</div>
+                    :
                     donations.map(donation =>
                         <Donation donation={donation} key={donation._id}/>
                     )
