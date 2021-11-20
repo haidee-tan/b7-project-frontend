@@ -16,8 +16,10 @@ const BeneficiaryList = (props) => {
                 <div className="beneName">
                     <h2>{props.beneficiary.name}</h2>
                 </div>
-                <div className="benePhoto">
-                    <img className="beneImg" src={props.axiosPort + props.beneficiary.photo} alt={props.beneficiary.name}/>
+                <div className="photobox">
+                    <div className="benePhoto">
+                        <img className="beneImg" src={props.axiosPort + props.beneficiary.photo} alt={props.beneficiary.name}/>
+                    </div>
                 </div>
                 <div className="beneContact">
                     <div className="contact-details">

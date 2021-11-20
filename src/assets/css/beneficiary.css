@@ -65,11 +65,14 @@
   margin: 5px;
   width: 100%;
 }
-.benePhoto {
+.photobox {
   width: 30%;
-  height: 200px;
+}
+.benePhoto {
+  /* padding: 20px; */
+  /* height: 280px; */
+  width: 100%;
   background-color: white;
-  padding: 20px;
   overflow: hidden;
   border-radius: 20px;
 }
