@@ -14,50 +14,48 @@ const LogIn = (props) => {
         email.trim() === "" ? setEmailErrMsg("Please complete all fields.") : setEmailErrMsg("");
         password.trim() === "" ? setPasswordErrMsg("Please complete all fields.") : setPasswordErrMsg("");
         let user = {email, password}
-        Axios.post(props.axiosPort + "users/login", user)
-        .then(res => {
-            if (res.data === "invalid credentials") {
-                return setErrorMsg("Invalid credentials.")
-            }
-            if (res.data.status !== "active") {
-                return setErrorMsg("Please contact Admin to set account status to active.")
-            }
-            let loginUser = {
-                role: res.data.role,
-                access: res.data.access,
-                email: res.data.email,
-                status: res.data.status,
-                firstName: res.data.firstName
-            }
-            props.userInfo(loginUser);
-            return window.location.replace("/");
-        })
+        if (email.trim() !== "" && password.trim() !== "") {
+            Axios.post(props.axiosPort + "users/login", user)
+            .then(res => {
+                if (res.data === "invalid credentials") {
+                    return setErrorMsg("Invalid credentials.")
+                }
+                if (res.data.status !== "active") {
+                    return setErrorMsg("Please contact Admin to set account status to active.")
+                }
+                let loginUser = {
+                    role: res.data.role,
+                    access: res.data.access,
+                    email: res.data.email,
+                    status: res.data.status,
+                    firstName: res.data.firstName
+                }
+                props.userInfo(loginUser);
+                return window.location.replace("/");
+            })
+        }
     }
 
     return (
     <div className="loginBox page">
-        <div className="loginContainer">
-            <div className="eMail">
-                <div>Email Address</div>
-
-                <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
-                <div>{emailErrMsg}</div>
-            </div>
-            <div className="password">
-                <div>Password</div>
-
-                <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-                <div>{passwordErrMsg}</div>
-            </div>
-
-            <div className="loginBtn">
-                <div className="loginErrMsg">{errorMsg}</div>
-                <button 
-                className="logIn"
-                onClick={handleLogIn}>
-                    Log In
-                </button>
-            </div>
+        <h3>Login</h3>
+        <div className="eMail">
+            <div>Email Address</div>
+            <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
+            <div>{emailErrMsg}</div>
+        </div>
+        <div className="password">
+            <div>Password</div>
+            <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+            <div>{passwordErrMsg}</div>
+        </div>
+        <div className="loginErrMsg">{errorMsg}</div>
+        <div className="loginBtn">
+            <button 
+                className="custom-btn"
+                onClick={handleLogIn}
+            >Login
+            </button>
         </div>
     </div>
     )
