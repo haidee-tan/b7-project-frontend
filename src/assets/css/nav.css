@@ -1,55 +1,53 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 .navBox {
-    margin-left: 10px;
-    display: flex;
-    justify-content:center;
+  background-color: #ececec;
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.navBox > div:first-child {
+  display: flex;
+  flex-wrap: wrap;
 }
 .navBtn {
-    background-color:  #7ed957;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 10px;
+  background-color: #7ed957;
+  margin: 5px;
+  padding: 8px 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  color: white;
+}
+.navBtn:hover {
+  background-color: #ff914d;
 }
 .logoutBox {
-    display: flex;
-    justify-content: space-around;
+  padding-right: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .spanName {
-    display: flex;
-}
-.spanName h2 {
-    padding-left: 10px;
+  font-weight: 700;
+  color: #ff914d;
+  display: flex;
+  align-items: center;
+  margin: none;
 }
 .name {
-    color: #ff914d;
-    padding-bottom: 10px;
+  color: #ff914d;
 }
 .logout {
-    background-color: #ff914d ;
+  background-color: #ff914d;
+  margin-left: 10px;
 }
 
 @media only screen and (min-width: 556px) {
-    .logoutBox {
-        width: 100%;
-        justify-content: space-between;
-    }
-    .spanName {
-        margin-left: 120px;
-    }
-    .logoutNav {
-        margin-right: 5px;
-    }
-    
 }
 
-
-
 @media only screen and (min-width: 991px) {
-
-  
 }

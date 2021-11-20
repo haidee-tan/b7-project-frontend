@@ -1,0 +1,83 @@
+#sign-up {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#sign-up h2 {
+  width: 100%;
+}
+#sign-up .info-box {
+  width: 40%;
+}
+#sign-up .info-box > div {
+  margin: 10px 0;
+}
+#sign-up .info-box h3 {
+  color: #3aa30d;
+  font-size: 23px;
+}
+#sign-up .info-box p {
+  font-size: 15px;
+  margin: 10px 0;
+}
+#sign-up .terms {
+  font-weight: 700;
+  color: #ff914d;
+}
+.sign-up-box {
+  width: 55%;
+  padding: 30px;
+  background-color: #ecffe3;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.sign-up-box > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.sign-up-box > div > div {
+  font-weight: 700;
+  color: #5a5a5a;
+  font-size: 14px;
+}
+.sign-up-box input,
+.sign-up-box select {
+  padding: 5px;
+  width: 70%;
+  border: none;
+  outline: 1px solid #b3b3b3;
+}
+#sign-up .sign-up-box > .error-msg {
+  width: 100%;
+  text-align: right;
+  font-size: 12px;
+  height: 18px;
+  margin-bottom: 5px;
+}
+.sign-up-box select {
+  text-transform: capitalize;
+}
+.sign-up-box > div:first-child {
+  margin-bottom: 20px;
+}
+.sign-up-box button {
+  padding: 4px 20px 6px 20px;
+  width: 70%;
+  background-color: #6cb84c;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.sign-up-box button:hover {
+  background-color: #ff914d;
+}
+.sign-up-box .btn-box {
+  justify-content: center;
+}

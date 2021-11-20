@@ -1,3 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
   background-color: #ececec;
 }
@@ -8,7 +15,19 @@ body {
   background-color: white;
 }
 .page {
-  padding: 15px;
+  padding: 30px;
+}
+.page h2 {
+  color: #ff914d;
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 30px;
+}
+.sticky {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  padding-bottom: 10px;
 }
 .modal {
   display: flex;
@@ -26,11 +45,22 @@ body {
   overflow: hidden;
   filter: drop-shadow(2px 2px 10px rgb(112, 112, 112));
 }
+.modal h3 {
+  width: 100%;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  background-color: #47aa1d;
+}
 .modal-body {
   padding: 20px;
 }
 .modal .btn-box {
-  justify-content: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 20px;
 }
 .modal .btn-box button {
   padding: 4px 30px 6px 30px;
@@ -50,10 +80,21 @@ body {
   margin-top: 10px;
   padding: 10px;
 }
-.nav {
-  background-color: #ececec;
-  padding: 5px;
-}
 .mainContent {
   margin-bottom: 10px;
+}
+.custom-btn {
+  padding: 4px 30px 6px 30px;
+  background-color: #6cb84c;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.custom-btn:hover {
+  background-color: #ff914d;
 }

@@ -24,6 +24,7 @@ import "../assets/css/banner.css"
 import "../assets/css/beneficiary.css"
 import "../assets/css/login.css"
 import "../assets/css/nav.css"
+import "../assets/css/signup.css"
 
 const Kaserolla = ({axiosPort, setBeneficiary, beneficiaries}) => {
     useEffect (() => {
@@ -37,9 +38,7 @@ const Kaserolla = ({axiosPort, setBeneficiary, beneficiaries}) => {
         <div className="banner">
             <Banner />
         </div>
-        <div className="nav">
-            <Nav />
-        </div>
+        <Nav />
         <div className="mainContent">
             <Route path="/" component={Home} exact/>
             <Route path="/beneficiaries" component={BeneficiaryPg} />

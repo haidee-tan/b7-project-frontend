@@ -40,63 +40,52 @@ const BeneficiaryEditForm = (props) => {
     <div className="beneListContainer">
         <div className="beneListBox">
             <div className="beneName">
-                <strong>
-                    Name :
-                </strong>
-                <h2>
-                    <input type="text" value={beneficiaryName} onChange={e => setBeneficiaryName(e.target.value)} />
-                </h2>
+                <input type="text" value={beneficiaryName} onChange={e => setBeneficiaryName(e.target.value)} />
             </div>
-
             <div className="benePhoto">
-                <div className="image">
                 <strong>
                     Upload Image :
                 </strong>
-                    <input
+                <input
                     className="addBenePhoto inputBene"
                     type="file"
                     name="photo"
                     accept="image/*"
-                    onChange={e => setPhoto(e.target.files[0])} />
-                </div>
-
-                <div className="details">
-                <strong>
-                    Details :
-                </strong>
-                    <textarea type="text" value={beneficiaryDescription} onChange={e => setBeneficiaryDescription(e.target.value)} />
-                </div>
+                    onChange={e => setPhoto(e.target.files[0])}
+                />
             </div>
-
             <div className="beneContact">
-
-                <strong>
-                    Address :           
-                </strong>
-                <div>
-                    <input type="text" value={beneficiaryAddress} onChange={e => setBeneficiaryAddress(e.target.value)} />
+                <div className="contact-details">
+                    <div className="details">
+                        <strong>Details :</strong>
+                        <textarea className="edit-field" type="text" value={beneficiaryDescription} onChange={e => setBeneficiaryDescription(e.target.value)} />
+                    </div>
+                    <div>
+                        <strong>Address :</strong>
+                        <input className="edit-field" type="text" value={beneficiaryAddress} onChange={e => setBeneficiaryAddress(e.target.value)} />
+                    </div>
+                    <div>
+                        <strong>Contact # :</strong>
+                        <input className="edit-field" type="number" value={beneficiaryContactNum} onChange={e => setBeneficiaryContactNum(e.target.value)} />
+                    </div>
+                    <div>
+                        <strong>Website :</strong>
+                        <input className="edit-field" type="text" value={beneficiaryWebsite} onChange={e => setBeneficiaryWebsite(e.target.value)} />
+                    </div>
+                    <div>
+                        <strong>Status :</strong>
+                        <select className="edit-field" value={status} onChange={e => setStatus(e.target.value)}>
+                            <option>active</option>
+                            <option>inactive</option>
+                        </select>
+                    </div>
                 </div>
-
-                <strong>
-                    Contact # :
-                </strong>
-                <div>
-                    <input type="number" value={beneficiaryContactNum} onChange={e => setBeneficiaryContactNum(e.target.value)} />
+                <div className="editBtnBox">
+                    <button 
+                        className="custom-btn"
+                        onClick={handleEdit}
+                    >Update</button>
                 </div>
-
-                <strong>
-                    Website :
-                </strong>
-                <div className="beneWebsite">
-                    <input type="text" value={beneficiaryWebsite} onChange={e => setBeneficiaryWebsite(e.target.value)} />
-                </div>
-
-                <button 
-                className="beneEditBtn"
-                onClick={handleEdit}>
-                    Update
-                </button>
             </div>
         </div>
     </div>

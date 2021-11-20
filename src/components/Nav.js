@@ -4,85 +4,42 @@ import {connect} from "react-redux";
 const Nav = ({currUser, logoutUser}) => {
     return(
         <div className="navBox">
-            <div className="homeNav">
-                <Link to="/">
-                    <button className="navBtn">
-                    Home
-                    </button>
-                </Link>
+            <div>
+                <Link to="/"><button className="navBtn">Home</button></Link>
+                <Link to="/beneficiaries"><button className="navBtn">Beneficiaries</button></Link>
+                {
+                    currUser.role === null || currUser.role === "" ?
+                    null
+                    :
+                    <>
+                        <Link to="/posts"><button className="navBtn">Posts</button></Link>
+                        <Link to="/donations"><button className="navBtn">Donations</button></Link>
+                    </>
+                }
             </div>
-
-            <div className="beneNav">
-                <Link to="/beneficiaries">
-                    <button className="navBtn">
-                        Beneficiaries
-                    </button>
-                </Link>
-            </div>
-            {
-                currUser.role === null || currUser.role === "" ?
-                null
-                :
-                <>
-                <div className="postNav">
-                    <Link to="/posts">
-                        <button className="navBtn">
-                            Posts
-                        </button>
-                    </Link>
-                </div>
-
-                <div className="donationNav">
-                    <Link to="/donations">
-                        <button className="navBtn">
-                            Donations
-                        </button>
-                    </Link>
-                </div>
-                </>
-            }
-            {
-                // currUser.role === "admin" ?
-                // <Link to="/userMgt">User Mgt</Link>
-                // : null
-            }
+            <div className="logoutBox">
             {
                 currUser.access === "" ?
                 <>
-                <div className="signupNav">
-                    <Link to="/signup">
-                        <button className="navBtn">
-                            Sign Up
-                        </button>
-                    </Link>
-                </div>
-                <div className="loginNav">
-                    <Link to="/login">
-                        <button className="navBtn">
-                            Login
-                        </button>
-                    </Link>
-                </div>
+                    <Link to="/signup"><button className="navBtn">Sign Up</button></Link>
+                    <Link to="/login"><button className="navBtn">Login</button></Link>
                 </>
                 :
                 <>
-                <div className="logoutBox">
-                    <span className="spanName">
-                        <h2>Hello,</h2> 
-                        <h2 className="name">
-                        {currUser.firstName}! 
-                        </h2>
-                    </span>
-                    <div className="logoutNav">
-                        <button 
-                        className="navBtn logout"
-                        onClick={logoutUser}>
-                            Logout
-                        </button>
-                    </div>
-                </div>
+                        <div>
+                            <p className="spanName">
+                                Hello, {currUser.firstName}!
+                            </p>
+                        </div>
+                        <div>
+                            <button 
+                                className="navBtn logout"
+                                onClick={logoutUser}
+                            >Logout</button>
+                        </div>
                 </>
             }
+            </div>
         </div>
     )
 }

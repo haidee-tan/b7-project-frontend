@@ -1,12 +1,85 @@
+.donations-table .header {
+  font-weight: 700;
+  text-align: center;
+  background-color: #85cf65;
+  color: white;
+  position: sticky;
+  top: 50px;
+  border-bottom: 5px solid white;
+}
 .donation-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: 5px 0;
+  padding: 5px 0;
+  font-size: 14px;
+  border-bottom: 1px solid #c5c5c5;
+}
+.donation-row > div {
+  padding: 5px;
 }
 .donation-row img {
-  width: 100px;
+  width: 100%;
+  object-fit: cover;
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
-
+.donation-row button {
+  width: 100%;
+  background-color: #ff914d;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-left: 5px;
+  padding: 4px 0 6px 0;
+}
+.donation-row button:hover {
+  background-color: #da4105;
+}
+.donation-row > div:nth-child(1) {
+  /*date*/
+  width: 12%;
+}
+.donation-row > div:nth-child(2) {
+  /*img*/
+  width: 20%;
+  overflow: hidden;
+}
+.donation-row > div:nth-child(3) {
+  /*post name*/
+  width: 18%;
+  font-weight: 700;
+  text-align: center;
+}
+.donation-row > div:nth-child(4) {
+  /*bene*/
+  width: 22%;
+}
+.donation-row > div:nth-child(5) {
+  /*qty*/
+  width: 10%;
+  text-align: center;
+}
+.donation-row > div:nth-child(6) {
+  /*amt*/
+  width: 10%;
+  text-align: center;
+}
+.donation-row > div:nth-child(7) {
+  /*btns*/
+  width: 8%;
+}
+.none-msg {
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #c5c5c5;
+  padding-bottom: 15px;
+}
 /* add donation form */
 .donation-form-body {
   display: flex;
@@ -84,9 +157,7 @@
   border: 1px solid #c5c5c5;
 }
 .donation-form .btn-box {
-  padding-top: 10px;
+  padding-top: 15px;
   border-top: 1px solid #a6d392;
-  width: 100%;
-  text-align: center;
   margin-top: 10px;
 }

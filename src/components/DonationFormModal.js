@@ -8,14 +8,23 @@ const DonationFormModal = (props) => {
         props.setModalDisp(false);
     }
     return(
-        <div>
-            <div>{props.systemMsg}</div>
-            {
-                props.modalDispData === "error" ?
-                <button onClick={handleErrorBtn}>Ok</button>
-                :
-                <button onClick={handleSuccessBtn}>Ok</button>
-            }
+        <div className="modal">
+            <h3>
+                {
+                    props.modalDispData === "error" ?
+                    "Oh no! :("
+                    : "Kaserolla served!"
+                }
+            </h3>
+            <div className="modal-body">{props.systemMsg}</div>
+            <div className="btn-box">
+                {
+                    props.modalDispData === "error" ?
+                    <button onClick={handleErrorBtn}>Ok</button>
+                    :
+                    <button onClick={handleSuccessBtn}>Ok</button>
+                }
+            </div>
         </div>
     )
 }
